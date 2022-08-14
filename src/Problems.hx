@@ -40,6 +40,28 @@ class ListNode {
 	}
 }
 
+function leetcode_longest_substring_without_repeating_characters(s:String):Int {
+	// https://leetcode.com/problems/longest-substring-without-repeating-characters/
+
+	var seen:Map<String, Int> = [];
+	var start = 0;
+	var mx = 0;
+
+	for (idx => ch in s.split('')) {
+		if (seen.exists(ch)) {
+			var tmp = seen[ch];
+			if (tmp >= start)
+				start = tmp + 1;
+		}
+		seen[ch] = idx;
+
+		if (idx - start + 1 > mx)
+			mx = idx - start + 1;
+	}
+
+	return mx;
+}
+
 function leetcode_two_sum(lst:Array<Int>, target:Int):Array<Int> {
 	// https://leetcode.com/problems/two-sum/
 

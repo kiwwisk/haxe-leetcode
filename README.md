@@ -54,3 +54,31 @@ class Solution:
 
         return Solution.list_nodes_from_iterable(val)
 ```
+
+## Solution 3
+
+https://leetcode.com/problems/longest-substring-without-repeating-characters/
+
+
+### Solution in Python
+
+```py
+class Solution:
+    def lengthOfLongestSubstring(self, s: str) -> int:
+        seen = {}
+        start = 0
+        mx = 0
+
+        for idx, ch in enumerate(s):
+            if ch in seen:
+                tmp = seen[ch]
+                if tmp >= start:
+                    start = tmp + 1
+
+            seen[ch] = idx
+
+            if (v:=idx - start + 1) > mx:
+                mx = v
+
+        return mx
+```

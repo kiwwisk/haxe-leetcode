@@ -2,6 +2,47 @@ package;
 
 import Problems;
 
+function test_leetcode_longest_substring_without_repeating_characters():Void {
+	var results:Array<String> = [];
+
+	switch (leetcode_longest_substring_without_repeating_characters("au")) {
+		case 2:
+			results.push('OK');
+		case _:
+			results.push('Error');
+	}
+
+	switch (leetcode_longest_substring_without_repeating_characters(" ")) {
+		case 1:
+			results.push('OK');
+		case _:
+			results.push('Error');
+	}
+
+	switch (leetcode_longest_substring_without_repeating_characters("abcabcbb")) {
+		case 3:
+			results.push('OK');
+		case _:
+			results.push('Error');
+	}
+
+	switch (leetcode_longest_substring_without_repeating_characters("pwwkew")) {
+		case 3:
+			results.push('OK');
+		case _:
+			results.push('Error');
+	}
+
+	switch (leetcode_longest_substring_without_repeating_characters("bbbbb")) {
+		case 1:
+			results.push('OK');
+		case _:
+			results.push('Error');
+	}
+
+	trace('Testing Leetcode Substring without repeating characters : ' + results.join(', '));
+}
+
 function test_leetcode_two_sum():Void {
 	var results:Array<String> = [];
 

@@ -2,6 +2,33 @@ package;
 
 import Problems;
 
+function test_leetcode_longest_palindromic_substring() {
+	var results:Array<String> = [];
+
+	switch (leetcode_longest_palindromic_substring("babad")) {
+		case "bab" | "aba":
+			results.push('OK');
+		case _:
+			results.push('Error');
+	}
+
+	switch (leetcode_longest_palindromic_substring("cbbd")) {
+		case "bb":
+			results.push('OK');
+		case _:
+			results.push('Error');
+	}
+
+	switch (leetcode_longest_palindromic_substring("axxxbbccxxxx")) {
+		case "xxxx":
+			results.push('OK');
+		case _:
+			results.push('Error');
+	}
+
+	trace('Testing Leetcode longest palindromic substring : ' + results.join(', '));
+}
+
 function test_leetcode_median_of_two_sorted_arrays() {
 	var results:Array<String> = [];
 

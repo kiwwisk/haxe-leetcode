@@ -100,3 +100,30 @@ class Solution:
 
         return (nums1[len(nums1) // 2 - 1] + nums1[len(nums1) // 2]) / 2
 ```
+
+## Solution 5
+
+https://leetcode.com/problems/longest-palindromic-substring/
+
+### Solution in Python
+
+```py
+class Solution:
+    def longestPalindrome(self, s: str) -> str:
+        if len(s) == 1:
+            return s
+
+        rv = ''
+        m = {}
+        for i, ch in enumerate(s):
+            m.setdefault(ch, []).append(i)
+
+        for ch, idxs in m.items():
+            for i, i1 in enumerate(idxs):
+                for j in range(i, len(idxs)):
+                    w = s[i1:idxs[j]+1]
+                    if len(w) > len(rv) and w == w[::-1]:
+                        rv = w
+
+        return rv
+```

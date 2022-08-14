@@ -40,6 +40,42 @@ class ListNode {
 	}
 }
 
+function leetcode_longest_palindromic_substring(s:String):String {
+	// https://leetcode.com/problems/longest-palindromic-substring/
+
+	if (s.length == 1)
+		return s;
+
+	var m:Map<String, Array<Int>> = [];
+	var rv:String = '';
+
+	for (idx => ch in s.split('')) {
+		if (m.exists(ch))
+			m[ch].push(idx);
+		else
+			m[ch] = [idx];
+	}
+
+	for (idxs in m) {
+		for (i => i1 in idxs) {
+			for (j in i...idxs.length) {
+				if (idxs[j] - i1 + 1 < rv.length)
+					continue;
+
+				var w = s.substr(i1, idxs[j] - i1 + 1);
+				if (w.length > rv.length) {
+					var rw = w.split('');
+					rw.reverse();
+
+					if (w == rw.join(''))
+						rv = w;
+				}
+			}
+		}
+	}
+	return rv;
+}
+
 function leetcode_median_of_two_sorted_arrays(m:Array<Int>, n:Array<Int>):Float {
 	// https://leetcode.com/problems/median-of-two-sorted-arrays/
 

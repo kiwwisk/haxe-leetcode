@@ -1,5 +1,45 @@
 package;
 
+private class ListNodeIterator {
+	var l:ListNode;
+
+	public function new(l:ListNode) {
+		this.l = l;
+	}
+
+	public function hasNext() {
+		return this.l != null;
+	}
+
+	public function next() {
+		var r = this.l;
+		this.l = this.l.next;
+		return r;
+	}
+}
+
+class ListNode {
+	public var val:Int = 0;
+	public var next:ListNode = null;
+
+	public inline function new(val:Int = 0, ?next:ListNode) {
+		this.val = val;
+		this.next = next;
+	}
+
+	public function iterator() {
+		return new ListNodeIterator(this);
+	}
+
+	public static function from_int_array(a:Array<Int>):ListNode {
+		var rv = [for (val in a) new ListNode(val)];
+		for (i in 0...rv.length - 1) {
+			rv[i].next = rv[i + 1];
+		}
+		return rv[0];
+	}
+}
+
 function leetcode_two_sum(lst:Array<Int>, target:Int):Array<Int> {
 	// https://leetcode.com/problems/two-sum/
 
@@ -13,4 +53,28 @@ function leetcode_two_sum(lst:Array<Int>, target:Int):Array<Int> {
 	}
 
 	return [-1, -1]; // error!
+}
+
+function leetcode_add_two_numbers(l1:ListNode, l2:ListNode):ListNode {
+	var n1:Array<Int> = [];
+	var n2:Array<Int> = [];
+
+	for (n in l1) {
+		n1.push(n.val);
+	}
+
+	for (n in l2) {
+		n2.push(n.val);
+	}
+
+	n1.reverse();
+	n2.reverse();
+
+	var ns1 = Std.parseInt(n1.map(val -> '$val').join(''));
+	var ns2 = Std.parseInt(n2.map(val -> '$val').join(''));
+
+	var arr_ch = '${ns1 + ns2}'.split('');
+	arr_ch.reverse();
+
+	return ListNode.from_int_array([for (ch in arr_ch) Std.parseInt(ch)]);
 }

@@ -40,6 +40,20 @@ class ListNode {
 	}
 }
 
+function leetcode_median_of_two_sorted_arrays(m:Array<Int>, n:Array<Int>):Float {
+	// https://leetcode.com/problems/median-of-two-sorted-arrays/
+
+	var merged = m.concat(n);
+
+	merged.sort((a, b) -> a - b);
+
+	if (merged.length % 2 == 0) {
+		return (merged[Std.int(merged.length / 2) - 1] + merged[Std.int(merged.length / 2)]) / 2.0;
+	}
+
+	return merged[Std.int(merged.length / 2)];
+}
+
 function leetcode_longest_substring_without_repeating_characters(s:String):Int {
 	// https://leetcode.com/problems/longest-substring-without-repeating-characters/
 

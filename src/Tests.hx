@@ -2,6 +2,26 @@ package;
 
 import Problems;
 
+function test_leetcode_median_of_two_sorted_arrays() {
+	var results:Array<String> = [];
+
+	switch (leetcode_median_of_two_sorted_arrays([1, 3], [2])) {
+		case 2.0:
+			results.push('OK');
+		case _:
+			results.push('Error');
+	}
+
+	switch (leetcode_median_of_two_sorted_arrays([1, 2], [3, 4])) {
+		case 2.5:
+			results.push('OK');
+		case _:
+			results.push('Error');
+	}
+
+	trace('Testing Leetcode Median of two sorted arrays : ' + results.join(', '));
+}
+
 function test_leetcode_longest_substring_without_repeating_characters():Void {
 	var results:Array<String> = [];
 

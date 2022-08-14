@@ -106,8 +106,8 @@ function leetcode_add_two_numbers(l1:ListNode, l2:ListNode):ListNode {
 	n1.reverse();
 	n2.reverse();
 
-	var ns1 = Std.parseInt(n1.map(val -> '$val').join(''));
-	var ns2 = Std.parseInt(n2.map(val -> '$val').join(''));
+	var ns1 = Std.parseInt(n1.join(''));
+	var ns2 = Std.parseInt(n2.join(''));
 
 	var arr_ch = '${ns1 + ns2}'.split('');
 	arr_ch.reverse();

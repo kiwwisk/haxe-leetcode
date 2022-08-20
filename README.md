@@ -127,3 +127,27 @@ class Solution:
 
         return rv
 ```
+
+## Solution 6
+
+https://leetcode.com/problems/zigzag-conversion/
+
+### Solution in Python
+
+```py
+class Solution:
+    def convert(self, s: str, numRows: int) -> str:
+        if numRows == 1:
+            return s
+
+        rows, increase, y = [[] for _ in range(numRows)], 1, 0
+        for ch in s:
+            rows[y].append(ch)
+
+            y += increase
+
+            if y == 0 or y == numRows - 1:
+                increase = -increase
+
+        return ''.join(''.join(row) for row in rows)
+```

@@ -40,6 +40,49 @@ class ListNode {
 	}
 }
 
+function leetcode_zigzag_conversion(s:String, num_rows:Int):String {
+	// https://leetcode.com/problems/zigzag-conversion/
+
+	if (num_rows == 1)
+		return s;
+
+	var rows:Array<Array<String>> = [];
+	var increase = 1;
+	var y = 0;
+
+	for (ch in s.split("")) {
+		if (rows[y] == null)
+			rows[y] = [];
+
+		rows[y].push(ch);
+
+		y += increase;
+
+		if ((y == 0) || (y == num_rows - 1))
+			increase = -increase;
+	}
+
+	/*
+		class Solution:
+		def convert(self, s: str, numRows: int) -> str:
+			if numRows == 1:
+				return s
+
+			rows, increase, y = [[] for _ in range(numRows)], 1, 0
+			for i, ch in enumerate(s):
+				rows[y].append(ch)
+
+				y += increase
+
+				if y == numRows - 1 or y == 0:
+					increase *= -1
+
+			return ''.join(''.join(row) for row in rows)
+	 */
+
+	return [for (row in rows) row.join('')].join('');
+}
+
 function leetcode_longest_palindromic_substring(s:String):String {
 	// https://leetcode.com/problems/longest-palindromic-substring/
 

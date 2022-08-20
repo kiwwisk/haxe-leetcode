@@ -2,6 +2,28 @@ package;
 
 import Problems;
 
+function test_leetcode_zigzag_conversion() {
+	var results:Array<String> = [];
+
+	trace(leetcode_zigzag_conversion("PAYPALISHIRING", 3));
+
+	switch (leetcode_zigzag_conversion("PAYPALISHIRING", 3)) {
+		case "PAHNAPLSIIGYIR":
+			results.push("OK");
+		case _:
+			results.push("Error");
+	}
+
+	switch (leetcode_zigzag_conversion("PAYPALISHIRING", 4)) {
+		case "PINALSIGYAHRPI":
+			results.push("OK");
+		case _:
+			results.push("Error");
+	}
+
+	trace('Testing Leetcode zigzag conversion : ' + results.join(', '));
+}
+
 function test_leetcode_longest_palindromic_substring() {
 	var results:Array<String> = [];
 

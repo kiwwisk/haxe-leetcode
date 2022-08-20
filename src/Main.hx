@@ -8,5 +8,6 @@ class Main {
 		test_leetcode_longest_substring_without_repeating_characters();
 		test_leetcode_median_of_two_sorted_arrays();
 		test_leetcode_longest_palindromic_substring();
+		test_leetcode_zigzag_conversion();
 	}
 }

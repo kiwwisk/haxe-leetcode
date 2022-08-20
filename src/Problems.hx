@@ -40,6 +40,31 @@ class ListNode {
 	}
 }
 
+function leetcode_zigzag_conversion(s:String, num_rows:Int):String {
+	// https://leetcode.com/problems/zigzag-conversion/
+
+	if (num_rows == 1)
+		return s;
+
+	var rows:Array<Array<String>> = [];
+	var increase = 1;
+	var y = 0;
+
+	for (ch in s.split("")) {
+		if (rows[y] == null)
+			rows[y] = [];
+
+		rows[y].push(ch);
+
+		y += increase;
+
+		if ((y == 0) || (y == num_rows - 1))
+			increase = -increase;
+	}
+
+	return [for (row in rows) row.join('')].join('');
+}
+
 function leetcode_longest_palindromic_substring(s:String):String {
 	// https://leetcode.com/problems/longest-palindromic-substring/
 

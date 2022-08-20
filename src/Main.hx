@@ -9,5 +9,6 @@ class Main {
 		test_leetcode_median_of_two_sorted_arrays();
 		test_leetcode_longest_palindromic_substring();
 		test_leetcode_zigzag_conversion();
+		test_leetcode_reverse_integer();
 	}
 }

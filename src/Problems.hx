@@ -40,6 +40,20 @@ class ListNode {
 	}
 }
 
+function leetcode_reverse_integer(x:Int):Int {
+	// https://leetcode.com/problems/reverse-integer/
+
+	var s = '${Math.abs(x)}'.split('');
+	s.reverse();
+
+	var new_x = Std.parseInt(s.join('')) * ((x < 0) ? -1 : 1);
+
+	if ((new_x < -2147483648) || (new_x >= 2147483648))
+		return 0;
+
+	return new_x;
+}
+
 function leetcode_zigzag_conversion(s:String, num_rows:Int):String {
 	// https://leetcode.com/problems/zigzag-conversion/
 

@@ -151,3 +151,18 @@ class Solution:
 
         return ''.join(''.join(row) for row in rows)
 ```
+
+## Solution 7
+
+https://leetcode.com/problems/reverse-integer/
+
+### Solution in Python
+
+```py
+class Solution:
+    def reverse(self, x: int) -> int:
+        num = int(str(abs(x))[::-1])*(-1 if x < 0 else 1)
+        if  -2147483648 <= num < 2147483648:
+            return num
+        return 0
+```

@@ -2,10 +2,35 @@ package;
 
 import Problems;
 
-function test_leetcode_zigzag_conversion() {
+function test_leetcode_reverse_integer() {
 	var results:Array<String> = [];
 
-	trace(leetcode_zigzag_conversion("PAYPALISHIRING", 3));
+	switch (leetcode_reverse_integer(123)) {
+		case 321:
+			results.push("OK");
+		case _:
+			results.push("Error");
+	}
+
+	switch (leetcode_reverse_integer(-123)) {
+		case -321:
+			results.push("OK");
+		case _:
+			results.push("Error");
+	}
+
+	switch (leetcode_reverse_integer(120)) {
+		case 21:
+			results.push("OK");
+		case _:
+			results.push("Error");
+	}
+
+	trace('Testing Leetcode reverse integer : ' + results.join(', '));
+}
+
+function test_leetcode_zigzag_conversion() {
+	var results:Array<String> = [];
 
 	switch (leetcode_zigzag_conversion("PAYPALISHIRING", 3)) {
 		case "PAHNAPLSIIGYIR":

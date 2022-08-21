@@ -40,6 +40,12 @@ class ListNode {
 	}
 }
 
+function leetcode_regular_expression_matching(s:String, p:String):Bool {
+	// https://leetcode.com/problems/regular-expression-matching/
+
+	return new EReg('^${p}$', '').match(s);
+}
+
 function leetcode_palindrome_number(x:Int):Bool {
 	// https://leetcode.com/problems/palindrome-number/
 

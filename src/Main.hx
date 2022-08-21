@@ -11,5 +11,6 @@ class Main {
 		test_leetcode_reverse_integer();
 		test_leetcode_string_to_integer_atoi();
 		test_leetcode_palindrome_number();
+		test_leetcode_regular_expression_matching();
 	}
 }

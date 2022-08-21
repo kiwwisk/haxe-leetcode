@@ -2,6 +2,33 @@ package;
 
 import Problems;
 
+function test_leetcode_regular_expression_matching() {
+	var results:Array<String> = [];
+
+	switch (leetcode_regular_expression_matching("aa", "a")) {
+		case false:
+			results.push("OK");
+		case _:
+			results.push("Error");
+	}
+
+	switch (leetcode_regular_expression_matching("aa", "a*")) {
+		case true:
+			results.push("OK");
+		case _:
+			results.push("Error");
+	}
+
+	switch (leetcode_regular_expression_matching("ab", ".*")) {
+		case true:
+			results.push("OK");
+		case _:
+			results.push("Error");
+	}
+
+	trace('Testing Regular expression matching : ' + results.join(', '));
+}
+
 function test_leetcode_palindrome_number() {
 	var results:Array<String> = [];
 

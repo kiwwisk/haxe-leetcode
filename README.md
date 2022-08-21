@@ -202,3 +202,17 @@ class Solution:
     def isPalindrome(self, x: int) -> bool:
         return str(x)[::-1] == str(x)
 ```
+
+## Solution 10
+
+https://leetcode.com/problems/regular-expression-matching/
+
+### Solution in Python
+
+```py
+import re
+
+class Solution:
+    def isMatch(self, s: str, p: str) -> bool:
+        return bool(re.match(p + '$', s))
+```

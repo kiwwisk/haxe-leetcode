@@ -40,6 +40,23 @@ class ListNode {
 	}
 }
 
+function leetcode_string_to_integer_atoi(s:String):Int {
+	// https://leetcode.com/problems/string-to-integer-atoi/
+
+	var pat = ~/\s*([+-]?\d+)/;
+
+	if (pat.match(s)) {
+		var x = Std.parseInt(pat.matched(1));
+		if (x < -2147483648)
+			return -2147483648;
+		if (x > 2147483647)
+			return 2147483647;
+		return x;
+	}
+
+	return 0;
+}
+
 function leetcode_reverse_integer(x:Int):Int {
 	// https://leetcode.com/problems/reverse-integer/
 

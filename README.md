@@ -166,3 +166,27 @@ class Solution:
             return num
         return 0
 ```
+
+## Solution 8
+
+https://leetcode.com/problems/string-to-integer-atoi/
+
+### Solution in Python
+
+```py
+import re
+
+pat = re.compile(r'\s*([+-]?\d+)')
+
+class Solution:
+    def myAtoi(self, s: str) -> int:
+        m = pat.match(s)
+        if m:
+            s = int(m[1])
+            if (s < -2**31):
+                return -2**31
+            if (s > 2**31 - 1):
+                return 2**31 - 1
+            return s
+        return 0
+```

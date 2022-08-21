@@ -2,6 +2,26 @@ package;
 
 import Problems;
 
+function test_leetcode_string_to_integer_atoi() {
+	var results:Array<String> = [];
+
+	switch (leetcode_string_to_integer_atoi("    -42")) {
+		case -42:
+			results.push("OK");
+		case _:
+			results.push("Error");
+	}
+
+	switch (leetcode_string_to_integer_atoi("4193 with words")) {
+		case 4193:
+			results.push("OK");
+		case _:
+			results.push("Error");
+	}
+
+	trace('Testing String to integer (atoi) : ' + results.join(', '));
+}
+
 function test_leetcode_reverse_integer() {
 	var results:Array<String> = [];
 

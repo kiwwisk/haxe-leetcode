@@ -2,6 +2,47 @@ package;
 
 import Problems;
 
+function test_leetcode_integer_to_roman() {
+	var results:Array<String> = [];
+
+	switch (leetcode_integer_to_roman(1994)) {
+		case "MCMXCIV":
+			results.push("OK");
+		case _:
+			results.push("Error");
+	}
+
+	switch (leetcode_integer_to_roman(58)) {
+		case "LVIII":
+			results.push("OK");
+		case _:
+			results.push("Error");
+	}
+
+	switch (leetcode_integer_to_roman(3)) {
+		case "III":
+			results.push("OK");
+		case _:
+			results.push("Error");
+	}
+
+	switch (leetcode_integer_to_roman(2022)) {
+		case "MMXXII":
+			results.push("OK");
+		case _:
+			results.push("Error");
+	}
+
+	switch (leetcode_integer_to_roman(3504)) {
+		case "MMMDIV":
+			results.push("OK");
+		case _:
+			results.push("Error");
+	}
+
+	trace('Testing Integer to Roman : ' + results.join(', '));
+}
+
 function test_leetcode_container_with_most_water() {
 	var results:Array<String> = [];
 

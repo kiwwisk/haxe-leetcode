@@ -40,6 +40,69 @@ class ListNode {
 	}
 }
 
+function leetcode_integer_to_roman(num:Int):String {
+	// https://leetcode.com/problems/integer-to-roman/
+
+	var rv = '';
+	var i = Math.floor(num / 1000);
+
+	rv = [for (_ in 0...i) 'M'].join('');
+	num -= i * 1000;
+
+	if (num >= 900) {
+		rv = '${rv}CM';
+		num -= 900;
+	}
+
+	i = Math.floor(num / 500);
+	rv = '${rv}${[for (_ in 0...i) 'D'].join('')}';
+	num -= i * 500;
+
+	if (num >= 400) {
+		rv = '${rv}CD';
+		num -= 400;
+	}
+
+	i = Math.floor(num / 100);
+	rv = '${rv}${[for (_ in 0...i) 'C'].join('')}';
+	num -= i * 100;
+
+	if (num >= 90) {
+		rv = '${rv}XC';
+		num -= 90;
+	}
+
+	i = Math.floor(num / 50);
+	rv = '${rv}${[for (_ in 0...i) 'L'].join('')}';
+	num -= i * 50;
+
+	if (num >= 40) {
+		rv = '${rv}XL';
+		num -= 40;
+	}
+
+	i = Math.floor(num / 10);
+	rv = '${rv}${[for (_ in 0...i) 'X'].join('')}';
+	num -= i * 10;
+
+	if (num == 9) {
+		rv = '${rv}IX';
+		num -= 9;
+	}
+
+	if (num >= 5) {
+		rv = '${rv}V';
+		num -= 5;
+	}
+
+	if (num == 4) {
+		rv = '${rv}IV';
+		num -= 4;
+	}
+
+	return '${rv}${[for (_ in 0...num) 'I'].join('')}';
+}
+
 function leetcode_container_with_most_water(height:Array<Int>):Int {
 	// https://leetcode.com/problems/container-with-most-water/
 

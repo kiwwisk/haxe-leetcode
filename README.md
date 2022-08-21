@@ -240,3 +240,67 @@ class Solution:
 
         return current
 ```
+
+## Solution 12
+
+https://leetcode.com/problems/integer-to-roman/
+
+### Solution in Python
+
+```py
+class Solution:
+    def intToRoman(self, num: int) -> str:
+        rv = ''
+
+        i = num // 1000
+        rv = 'M'*i + rv
+        num -= i*1000
+
+        if (num >= 900):
+            rv = rv + 'CM'
+            num -= 900
+
+        i = num // 500
+        rv = rv + 'D'*i
+        num -= i*500
+
+        if (num >= 400):
+            rv = rv + 'CD'
+            num -= 400
+
+        i = num // 100
+        rv = rv + 'C'*i
+        num -= i*100
+
+        if (num >= 90):
+            rv = rv + 'XC'
+            num -= 90
+
+        i = num // 50
+        rv = rv + 'L'*i
+        num -= i*50
+
+        if (num >= 40):
+            rv = rv + 'XL'
+            num -= 40
+
+        i = num // 10
+        rv = rv + 'X'*i
+        num -= i*10
+
+        if (num == 9):
+            rv = rv + 'IX'
+            num -= 9
+
+        if (num >= 5):
+            rv = rv + 'V'
+            num -= 5
+
+        if (num == 4):
+            rv = rv + 'IV'
+            num -= 4
+
+        rv = rv + 'I'*num
+
+        return rv
+```

@@ -40,6 +40,16 @@ class ListNode {
 	}
 }
 
+function leetcode_palindrome_number(x:Int):Bool {
+	// https://leetcode.com/problems/palindrome-number/
+
+	var s = '${x}';
+	var rev_s = s.split('');
+	rev_s.reverse();
+
+	return rev_s.join('') == s;
+}
+
 function leetcode_string_to_integer_atoi(s:String):Int {
 	// https://leetcode.com/problems/string-to-integer-atoi/
 

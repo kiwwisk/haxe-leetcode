@@ -2,6 +2,33 @@ package;
 
 import Problems;
 
+function test_leetcode_palindrome_number() {
+	var results:Array<String> = [];
+
+	switch (leetcode_palindrome_number(121)) {
+		case true:
+			results.push("OK");
+		case _:
+			results.push("Error");
+	}
+
+	switch (leetcode_palindrome_number(-121)) {
+		case false:
+			results.push("OK");
+		case _:
+			results.push("Error");
+	}
+
+	switch (leetcode_palindrome_number(10)) {
+		case false:
+			results.push("OK");
+		case _:
+			results.push("Error");
+	}
+
+	trace('Testing Palindrome number : ' + results.join(', '));
+}
+
 function test_leetcode_string_to_integer_atoi() {
 	var results:Array<String> = [];
 

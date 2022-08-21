@@ -190,3 +190,15 @@ class Solution:
             return s
         return 0
 ```
+
+## Solution 9
+
+https://leetcode.com/problems/palindrome-number/
+
+### Solution in Python
+
+```py
+class Solution:
+    def isPalindrome(self, x: int) -> bool:
+        return str(x)[::-1] == str(x)
+```

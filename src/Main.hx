@@ -10,5 +10,6 @@ class Main {
 		test_leetcode_zigzag_conversion();
 		test_leetcode_reverse_integer();
 		test_leetcode_string_to_integer_atoi();
+		test_leetcode_palindrome_number();
 	}
 }

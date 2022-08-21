@@ -14,5 +14,6 @@ class Main {
 		test_leetcode_regular_expression_matching();
 		test_leetcode_container_with_most_water();
 		test_leetcode_integer_to_roman();
+		test_leetcode_roman_to_integer();
 	}
 }

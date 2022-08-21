@@ -40,6 +40,29 @@ class ListNode {
 	}
 }
 
+function leetcode_roman_to_integer(s:String):Int {
+	// https://leetcode.com/problems/roman-to-integer/
+
+	final m = ['M' => 1000, 'D' => 500, 'C' => 100, 'L' => 50, 'X' => 10, 'V' => 5, 'I' => 1];
+	final nums:Array<Int> = [];
+	var chars = s.split('');
+
+	while (chars.length > 0) {
+		final num = m[chars[0]];
+		chars = chars.slice(1);
+
+		if ((nums.length > 0) && (nums[nums.length - 1] < num))
+			nums.push(num - nums.pop());
+		else
+			nums.push(num);
+	}
+
+	var sum = 0;
+	for (val in nums)
+		sum += val;
+	return sum;
+}
+
 function leetcode_integer_to_roman(num:Int):String {
 	// https://leetcode.com/problems/integer-to-roman/
 

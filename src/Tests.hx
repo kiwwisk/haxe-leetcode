@@ -2,6 +2,33 @@ package;
 
 import Problems;
 
+function test_leetcode_roman_to_integer() {
+	var results:Array<String> = [];
+
+	switch (leetcode_roman_to_integer("MCMXCIV")) {
+		case 1994:
+			results.push("OK");
+		case _:
+			results.push("Error");
+	}
+
+	switch (leetcode_roman_to_integer("LVIII")) {
+		case 58:
+			results.push("OK");
+		case _:
+			results.push("Error");
+	}
+
+	switch (leetcode_roman_to_integer("III")) {
+		case 3:
+			results.push("OK");
+		case _:
+			results.push("Error");
+	}
+
+	trace('Testing Roman to integer : ' + results.join(', '));
+}
+
 function test_leetcode_integer_to_roman() {
 	var results:Array<String> = [];
 

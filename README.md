@@ -304,3 +304,29 @@ class Solution:
 
         return rv
 ```
+
+## Solution 13
+
+https://leetcode.com/problems/roman-to-integer/
+
+### Solution in Python
+
+```py
+m = {'M':1000, 'D':500, 'C':100, 'L':50, 'X':10, 'V':5, 'I':1}
+
+class Solution:
+
+    def romanToInt(self, s: str) -> int:
+        nums = []
+
+        while s:
+            num, *s = s
+            num = m[num]
+
+            if nums and nums[-1] < num:
+                nums.append(num - nums.pop())
+            else:
+                nums.append(num)
+
+        return sum(nums)
+```

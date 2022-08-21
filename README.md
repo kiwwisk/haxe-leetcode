@@ -330,3 +330,19 @@ class Solution:
 
         return sum(nums)
 ```
+
+## Solution 14
+
+https://leetcode.com/problems/longest-common-prefix/
+
+### Solution in Python
+
+```py
+class Solution:
+    def longestCommonPrefix(self, strs: List[str]) -> str:
+        for i, ch in enumerate(zip(*strs)):
+            if len(set(ch)) != 1:
+                return strs[0][:i]
+
+        return min(strs, key=len)
+```

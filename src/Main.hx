@@ -15,5 +15,6 @@ class Main {
 		test_leetcode_container_with_most_water();
 		test_leetcode_integer_to_roman();
 		test_leetcode_roman_to_integer();
+		test_leetcode_longest_common_prefix();
 	}
 }

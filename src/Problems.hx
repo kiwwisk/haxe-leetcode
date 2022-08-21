@@ -40,6 +40,26 @@ class ListNode {
 	}
 }
 
+function leetcode_longest_common_prefix(strs:Array<String>):String {
+	// https://leetcode.com/problems/longest-common-prefix/
+
+	strs.sort((a, b) -> a.length - b.length);
+
+	for (i in 0...strs[0].length) {
+		var prev_char = '';
+		for (str in strs) {
+			final ch = str.charAt(i);
+			if (prev_char == '')
+				prev_char = ch;
+			else if (prev_char != ch)
+				return strs[0].substr(0, i);
+		}
+		prev_char = '';
+	}
+
+	return strs[0];
+}
+
 function leetcode_roman_to_integer(s:String):Int {
 	// https://leetcode.com/problems/roman-to-integer/
 

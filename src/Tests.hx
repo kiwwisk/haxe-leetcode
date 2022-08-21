@@ -2,6 +2,40 @@ package;
 
 import Problems;
 
+function test_leetcode_longest_common_prefix() {
+	var results:Array<String> = [];
+
+	switch (leetcode_longest_common_prefix(["flower", "flow", "flight"])) {
+		case "fl":
+			results.push("OK");
+		case _:
+			results.push("Error");
+	}
+
+	switch (leetcode_longest_common_prefix(["dog", "racecar", "car"])) {
+		case "":
+			results.push("OK");
+		case _:
+			results.push("Error");
+	}
+
+	switch (leetcode_longest_common_prefix(["ab", "a"])) {
+		case "a":
+			results.push("OK");
+		case _:
+			results.push("Error");
+	}
+
+	switch (leetcode_longest_common_prefix(["a"])) {
+		case "a":
+			results.push("OK");
+		case _:
+			results.push("Error");
+	}
+
+	trace('Testing Longest common prefix : ' + results.join(', '));
+}
+
 function test_leetcode_roman_to_integer() {
 	var results:Array<String> = [];
 

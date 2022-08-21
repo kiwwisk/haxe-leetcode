@@ -2,6 +2,26 @@ package;
 
 import Problems;
 
+function test_leetcode_container_with_most_water() {
+	var results:Array<String> = [];
+
+	switch (leetcode_container_with_most_water([1, 8, 6, 2, 5, 4, 8, 3, 7])) {
+		case 49:
+			results.push("OK");
+		case _:
+			results.push("Error");
+	}
+
+	switch (leetcode_container_with_most_water([1, 2, 4, 3])) {
+		case 4:
+			results.push("OK");
+		case _:
+			results.push("Error");
+	}
+
+	trace('Testing Container with most water : ' + results.join(', '));
+}
+
 function test_leetcode_regular_expression_matching() {
 	var results:Array<String> = [];
 

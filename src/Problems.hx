@@ -40,6 +40,26 @@ class ListNode {
 	}
 }
 
+function leetcode_container_with_most_water(height:Array<Int>):Int {
+	// https://leetcode.com/problems/container-with-most-water/
+
+	var left = 0;
+	var right = height.length - 1;
+
+	var current = (right - left) * Std.int(Math.min(height[left], height[right]));
+
+	while (right > left) {
+		if (height[left] > height[right])
+			right -= 1;
+		else
+			left += 1;
+
+		current = Std.int(Math.max(current, (right - left) * Math.min(height[left], height[right])));
+	}
+
+	return current;
+}
+
 function leetcode_regular_expression_matching(s:String, p:String):Bool {
 	// https://leetcode.com/problems/regular-expression-matching/
 

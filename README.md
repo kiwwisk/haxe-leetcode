@@ -216,3 +216,27 @@ class Solution:
     def isMatch(self, s: str, p: str) -> bool:
         return bool(re.match(p + '$', s))
 ```
+
+## Solution 11
+
+https://leetcode.com/problems/container-with-most-water/
+
+### Solution in Python
+
+```py
+class Solution:
+    def maxArea(self, height):
+        left, right = 0, len(height)-1
+        current = (right - left) * min(height[left], height[right])
+
+        while right > left:
+
+            if height[left] > height[right]:
+                right -= 1
+            else:
+                left += 1
+
+            current = max(current, (right - left) * min(height[left], height[right]))
+
+        return current
+```

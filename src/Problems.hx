@@ -40,6 +40,68 @@ class ListNode {
 	}
 }
 
+function leetcode_3sum(nums:Array<Int>):Array<String> {
+	// https://leetcode.com/problems/3sum/
+
+	final m:Map<Int, Int> = [];
+	final rv:Map<String, Bool> = [];
+
+	for (n in nums)
+		m.exists(n) ? m[n] += 1 : m[n] = 1;
+
+	for (n1 in m.keys()) {
+		m[n1] -= 1;
+
+		for (n2 in m.keys()) {
+			var n3 = (-n1 - n2);
+
+			if (!m.exists(n3))
+				continue;
+
+			m[n2] -= 1;
+			m[n3] -= 1;
+
+			if ((m[n2] < 0) || (m[n3] < 0)) {
+				m[n2] += 1;
+				m[n3] += 1;
+				continue;
+			}
+
+			m[n2] += 1;
+			m[n3] += 1;
+
+			// sorting:
+			var on1 = n1;
+
+			if (n1 > n2) {
+				var tmp = n1;
+				n1 = n2;
+				n2 = tmp;
+			}
+
+			if (n2 > n3) {
+				var tmp = n2;
+				n2 = n3;
+				n3 = tmp;
+			}
+
+			if (n1 > n2) {
+				var tmp = n1;
+				n1 = n2;
+				n2 = tmp;
+			}
+
+			rv[[n1, n2, n3].join(',')] = true;
+
+			n1 = on1;
+		}
+
+		m[n1] += 1;
+	}
+
+	return [for (k in rv.keys()) k];
+}
+
 function leetcode_longest_common_prefix(strs:Array<String>):String {
 	// https://leetcode.com/problems/longest-common-prefix/
 

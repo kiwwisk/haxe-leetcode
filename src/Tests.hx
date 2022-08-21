@@ -2,6 +2,26 @@ package;
 
 import Problems;
 
+function test_leetcode_3sum() {
+	var results:Array<String> = [];
+
+	switch (leetcode_3sum([-1, 0, 1, 2, -1, -4])) {
+		case ['-1,0,1', '-1,-1,2']:
+			results.push("OK");
+		case _:
+			results.push("Error");
+	}
+
+	switch (leetcode_3sum([-4, -2, -2, -2, 0, 1, 2, 2, 2, 3, 3, 4, 4, 6, 6])) {
+		case ['-2,-2,4', '-4,-2,6', '-2,0,2', '-4,2,2', '-4,1,3', '-4,0,4']:
+			results.push("OK");
+		case _:
+			results.push("Error");
+	}
+
+	trace('Testing 3Sum : ' + results.join(', '));
+}
+
 function test_leetcode_longest_common_prefix() {
 	var results:Array<String> = [];
 

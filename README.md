@@ -346,3 +346,59 @@ class Solution:
 
         return min(strs, key=len)
 ```
+
+## Solution 15
+
+https://leetcode.com/problems/3sum/
+
+### Solution in Python
+
+```py
+class Solution:
+    def threeSum(self, nums):
+
+        m = {}
+        for n in nums:
+            m[n] = m.get(n, 0) + 1
+
+        rv = set()
+
+        for n1 in m:
+            m[n1] -= 1
+
+            for n2 in m:
+                n3 = (-n1-n2)
+                if n3 not in m:
+                    continue
+
+                m[n2] -= 1
+                m[n3] -= 1
+
+                if m[n2] < 0 or m[n3] < 0:
+                    m[n2] += 1
+                    m[n3] += 1
+                    continue
+
+                m[n2] += 1
+                m[n3] += 1
+
+                on1 = n1
+
+                if n1 > n2:
+                    n1, n2 = n2, n1
+
+                if n2 > n3:
+                    n2, n3 = n3, n2
+
+                if n1 > n2:
+                    n1, n2 = n2, n1
+
+                vals = (n1, n2, n3)
+                rv.add(vals)
+
+                n1 = on1
+
+            m[n1] += 1
+
+        return rv
+```

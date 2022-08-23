@@ -402,3 +402,44 @@ class Solution:
 
         return rv
 ```
+
+## Solution 16
+
+https://leetcode.com/problems/3sum-closest/
+
+### Solution in Python
+
+```py
+class Solution:
+
+    def threeSumClosest(self, nums: List[int], target: int) -> int:
+        if len(nums) == 3:
+            return sum(nums)
+
+        nums.sort()
+
+        diff = float('inf')
+
+        for i in range(len(nums) - 2):
+            if i != 0 and nums[i] == nums[i - 1]:
+                continue
+
+            left = i + 1
+            right = len(nums) - 1
+            n1 = nums[i]
+
+            while left < right:
+                tmp = n1 + nums[left] + nums[right]
+                cur_diff = abs(target - tmp)
+
+                if cur_diff < diff:
+                    diff = cur_diff
+                    ans = tmp
+
+                if tmp > target:
+                    right -= 1
+                else:
+                    left += 1
+
+        return ans
+```

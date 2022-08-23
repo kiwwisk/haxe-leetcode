@@ -40,6 +40,45 @@ class ListNode {
 	}
 }
 
+function leetcode_3sum_closest(nums:Array<Int>, target:Int):Int {
+	// https://leetcode.com/problems/3sum-closest/
+
+	if (nums.length == 3) {
+		var sum = 0;
+		for (n in nums)
+			sum += n;
+		return sum;
+	}
+
+	nums.sort((i1, i2) -> i1 - i2);
+
+	var diff = Math.POSITIVE_INFINITY;
+	var ans = 0;
+
+	for (i in 0...nums.length - 2) {
+		if ((i != 0) && (nums[i] == nums[i - 1]))
+			continue;
+
+		var left = i + 1;
+		var right = nums.length - 1;
+		final n1 = nums[i];
+
+		while (left < right) {
+			final tmp = n1 + nums[left] + nums[right];
+			final curr_diff = Std.int(Math.abs(target - tmp));
+
+			if (curr_diff < diff) {
+				diff = curr_diff;
+				ans = tmp;
+			}
+
+			tmp > target ? right -= 1 : left += 1;
+		}
+	}
+
+	return ans;
+}
+
 function leetcode_3sum(nums:Array<Int>):Array<String> {
 	// https://leetcode.com/problems/3sum/
 

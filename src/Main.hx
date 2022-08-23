@@ -17,5 +17,6 @@ class Main {
 		test_leetcode_roman_to_integer();
 		test_leetcode_longest_common_prefix();
 		test_leetcode_3sum();
+		test_leetcode_3sum_closest();
 	}
 }

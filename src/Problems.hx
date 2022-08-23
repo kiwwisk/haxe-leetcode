@@ -40,6 +40,37 @@ class ListNode {
 	}
 }
 
+function leetcode_letter_combinations_of_a_phone_number(digits:String):Array<String> {
+	// https://leetcode.com/problems/letter-combinations-of-a-phone-number/
+
+	final mapping = [
+		'2' => ['a', 'b', 'c'],
+		'3' => ['d', 'e', 'f'],
+		'4' => ['g', 'h', 'i'],
+		'5' => ['j', 'k', 'l'],
+		'6' => ['m', 'n', 'o'],
+		'7' => ['p', 'q', 'r', 's'],
+		'8' => ['t', 'u', 'v'],
+		'9' => ['w', 'x', 'y', 'z']
+	];
+
+	if (digits.length == 0)
+		return [];
+
+	if (digits.length == 1)
+		return mapping[digits];
+
+	var stack = digits.split('');
+	stack.reverse();
+
+	var out = mapping[stack.pop()];
+
+	while (stack.length > 0)
+		out = [for (ch in mapping[stack.pop()]) for (v in out) v + ch];
+
+	return out;
+}
+
 function leetcode_3sum_closest(nums:Array<Int>, target:Int):Int {
 	// https://leetcode.com/problems/3sum-closest/
 

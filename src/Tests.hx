@@ -2,6 +2,33 @@ package;
 
 import Problems;
 
+function test_leetcode_letter_combinations_of_a_phone_number() {
+	var results:Array<String> = [];
+
+	switch (leetcode_letter_combinations_of_a_phone_number("23")) {
+		case ['ad', 'bd', 'cd', 'ae', 'be', 'ce', 'af', 'bf', 'cf']:
+			results.push("OK");
+		case _:
+			results.push("Error");
+	}
+
+	switch (leetcode_letter_combinations_of_a_phone_number("")) {
+		case []:
+			results.push("OK");
+		case _:
+			results.push("Error");
+	}
+
+	switch (leetcode_letter_combinations_of_a_phone_number("2")) {
+		case ["a", "b", "c"]:
+			results.push("OK");
+		case _:
+			results.push("Error");
+	}
+
+	trace('Testing Letter Combinations of a Phone Number : ' + results.join(', '));
+}
+
 function test_leetcode_3sum_closest() {
 	var results:Array<String> = [];
 

@@ -18,5 +18,6 @@ class Main {
 		test_leetcode_longest_common_prefix();
 		test_leetcode_3sum();
 		test_leetcode_3sum_closest();
+		test_leetcode_letter_combinations_of_a_phone_number();
 	}
 }

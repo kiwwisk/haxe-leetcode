@@ -478,3 +478,49 @@ class Solution:
 
         return out
 ```
+
+## Solution 18
+
+https://leetcode.com/problems/4sum/
+
+## Solution in Python
+
+```py
+class Solution:
+    def fourSum(self, nums: List[int], target: int) -> List[List[int]]:
+        sum2 = {}
+        cnt = {}
+
+        for v in nums:
+            cnt[v] = cnt.get(v, 0) + 1
+
+        keys = list(cnt)
+
+        for i in range(len(keys)):
+            for j in range(i, len(keys)):
+                sum2.setdefault(keys[i] + keys[j], []).append((keys[i], keys[j]))
+
+        out = set()
+
+        for k, v in sum2.items():
+            if target - k not in sum2:
+                continue
+
+            for a, b in v:
+                for c, d in sum2[target - k]:
+
+                    cnt[a] -= 1
+                    cnt[b] -= 1
+                    cnt[c] -= 1
+                    cnt[d] -= 1
+
+                    if cnt[a] >= 0 and cnt[b] >= 0 and cnt[c] >= 0 and cnt[d] >= 0:
+                        out.add(tuple(sorted((a, b, c, d))))
+
+                    cnt[a] += 1
+                    cnt[b] += 1
+                    cnt[c] += 1
+                    cnt[d] += 1
+
+        return out
+```

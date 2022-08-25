@@ -40,6 +40,51 @@ class ListNode {
 	}
 }
 
+function leetcode_4sum(nums:Array<Int>, target:Int):Array<String> {
+	// https://leetcode.com/problems/4sum/
+
+	final sum2:Map<Int, Array<Array<Int>>> = [];
+	final cnt:Map<Int, Int> = [];
+	final out:Map<String, Bool> = [];
+
+	for (n in nums)
+		cnt.exists(n) ? cnt[n] += 1 : cnt[n] = 1;
+
+	for (i in cnt.keys())
+		for (j in cnt.keys()) {
+			final tmp = i + j;
+			sum2.exists(tmp) ? sum2[tmp].push([i, j]) : sum2[tmp] = [[i, j]];
+		}
+
+	for (k => v in sum2) {
+		if (!sum2.exists(target - k))
+			continue;
+
+		for (a_b in v) {
+			for (c_d in sum2[target - k]) {
+				cnt[a_b[0]] -= 1;
+				cnt[a_b[1]] -= 1;
+				cnt[c_d[0]] -= 1;
+				cnt[c_d[1]] -= 1;
+
+				if ((cnt[a_b[0]] >= 0) && (cnt[a_b[1]] >= 0) && (cnt[c_d[0]] >= 0) && (cnt[c_d[1]] >= 0)) {
+					final tmp = [a_b[0], a_b[1], c_d[0], c_d[1]];
+					tmp.sort((i1, i2) -> i1 - i2);
+
+					out[tmp.join('|')] = true;
+				}
+
+				cnt[a_b[0]] += 1;
+				cnt[a_b[1]] += 1;
+				cnt[c_d[0]] += 1;
+				cnt[c_d[1]] += 1;
+			}
+		}
+	}
+
+	return [for (k in out.keys()) k];
+}
+
 function leetcode_letter_combinations_of_a_phone_number(digits:String):Array<String> {
 	// https://leetcode.com/problems/letter-combinations-of-a-phone-number/
 

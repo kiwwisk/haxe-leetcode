@@ -2,6 +2,26 @@ package;
 
 import Problems;
 
+function test_leetcode_4sum() {
+	var results:Array<String> = [];
+
+	switch (leetcode_4sum([1, 0, -1, 0, -2, 2], 0)) {
+		case ['-2|0|0|2', '-1|0|0|1', '-2|-1|1|2']:
+			results.push("OK");
+		case _:
+			results.push("Error");
+	}
+
+	switch (leetcode_4sum([2, 2, 2, 2, 2], 8)) {
+		case ['2|2|2|2']:
+			results.push("OK");
+		case _:
+			results.push("Error");
+	}
+
+	trace('Testing 4Sum : ' + results.join(', '));
+}
+
 function test_leetcode_letter_combinations_of_a_phone_number() {
 	var results:Array<String> = [];
 

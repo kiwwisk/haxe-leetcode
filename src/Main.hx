@@ -23,5 +23,6 @@ class Main {
 		test_leetcode_remove_nth_node_from_end_of_list();
 		test_leetcode_valid_parentheses();
 		test_leetcode_merge_two_sorted_lists();
+		test_leetcode_generate_parentheses();
 	}
 }

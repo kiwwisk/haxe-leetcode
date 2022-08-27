@@ -40,6 +40,28 @@ class ListNode {
 	}
 }
 
+function leetcode_generate_parentheses(n:Int):Array<String> {
+	// https://leetcode.com/problems/generate-parentheses/
+
+	final current:Array<String> = [];
+
+	function _generate(s:String, opening:Int, closing:Int) {
+		if (closing == n) {
+			current.push(s);
+			return;
+		}
+
+		if (opening < n)
+			_generate('${s}(', opening + 1, closing);
+
+		if (closing < opening)
+			_generate('${s})', opening, closing + 1);
+	}
+
+	_generate("(", 1, 0);
+	return current;
+}
+
 function leetcode_merge_two_sorted_lists(list1:ListNode, list2:ListNode):Null<ListNode> {
 	// https://leetcode.com/problems/merge-two-sorted-lists/
 

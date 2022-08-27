@@ -2,6 +2,26 @@ package;
 
 import Problems;
 
+function test_leetcode_generate_parentheses() {
+	var results:Array<String> = [];
+
+	switch (leetcode_generate_parentheses(3)) {
+		case ['((()))', '(()())', '(())()', '()(())', '()()()']:
+			results.push("OK");
+		case _:
+			results.push("Error");
+	}
+
+	switch (leetcode_generate_parentheses(1)) {
+		case ['()']:
+			results.push("OK");
+		case _:
+			results.push("Error");
+	}
+
+	trace('Testing Generate Parentheses : ' + results.join(', '));
+}
+
 function test_leetcode_merge_two_sorted_lists() {
 	var results:Array<String> = [];
 

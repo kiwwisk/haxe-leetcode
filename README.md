@@ -622,3 +622,28 @@ class Solution:
 
         return lst[0]
 ```
+
+## Solution 22
+
+https://leetcode.com/problems/generate-parentheses/
+
+### Solution in Python
+
+```py
+def generate(s, opening, closing, n, current):
+    if closing == n:
+        current.append(s)
+        return
+
+    if opening < n:
+        generate(s + '(', opening + 1, closing, n, current)
+
+    if closing < opening:
+        generate(s + ')', opening, closing + 1, n, current)
+
+class Solution:
+    def generateParenthesis(self, n):
+        lst = []
+        generate('(', 1, 0, n, lst)
+        return lst
+```

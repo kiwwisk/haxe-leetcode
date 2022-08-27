@@ -40,6 +40,23 @@ class ListNode {
 	}
 }
 
+function leetcode_valid_parentheses(s:String):Bool {
+	// https://leetcode.com/problems/valid-parentheses/
+
+	final m = ["(" => ")", "{" => "}", "[" => "]"];
+	final inv_m = [")" => "(", "}" => "{", "]" => "["];
+
+	final opening:Array<String> = [];
+
+	for (ch in s.split(""))
+		if (m.exists(ch))
+			opening.push(ch);
+		else if ((opening.length == 0) || (opening.pop() != inv_m[ch]))
+			return false;
+
+	return opening.length == 0;
+}
+
 function leetcode_remove_nth_node_from_end_of_list(head:ListNode, n:Int):Null<ListNode> {
 	// https://leetcode.com/problems/remove-nth-node-from-end-of-list/
 

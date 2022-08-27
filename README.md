@@ -557,3 +557,28 @@ class Solution:
 
         return head
 ```
+
+## Solution 20
+
+https://leetcode.com/problems/valid-parentheses/
+
+### Solution in Python
+
+```py
+m = {'(':')', '{':'}', '[':']'}
+inv_m = {')':'(', '}':'{', ']':'['}
+
+class Solution:
+    def isValid(self, s: str) -> bool:
+        last_par = None
+
+        opening = []
+        for ch in s:
+            if ch in m:
+                opening.append(ch)
+            else:
+                if not opening or opening.pop() != inv_m[ch]:
+                    return False
+
+        return len(opening) == 0
+```

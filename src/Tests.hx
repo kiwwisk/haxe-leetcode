@@ -2,6 +2,40 @@ package;
 
 import Problems;
 
+function test_leetcode_valid_parentheses() {
+	var results:Array<String> = [];
+
+	switch (leetcode_valid_parentheses("()")) {
+		case true:
+			results.push("OK");
+		case _:
+			results.push("Error");
+	}
+
+	switch (leetcode_valid_parentheses("(]")) {
+		case false:
+			results.push("OK");
+		case _:
+			results.push("Error");
+	}
+
+	switch (leetcode_valid_parentheses("(")) {
+		case false:
+			results.push("OK");
+		case _:
+			results.push("Error");
+	}
+
+	switch (leetcode_valid_parentheses("(([])){}")) {
+		case true:
+			results.push("OK");
+		case _:
+			results.push("Error");
+	}
+
+	trace('Testing Valid Parentheses : ' + results.join(', '));
+}
+
 function test_leetcode_remove_nth_node_from_end_of_list() {
 	var results:Array<String> = [];
 

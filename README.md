@@ -524,3 +524,36 @@ class Solution:
 
         return out
 ```
+
+## Solution 19
+
+https://leetcode.com/problems/remove-nth-node-from-end-of-list/
+
+### Solution in Python
+
+```py
+# Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
+
+class Solution:
+    def removeNthFromEnd(self, head, n):
+
+        cur, nodes = head, []
+
+        while cur:
+            nodes.append(cur)
+            cur = cur.next
+
+        if len(nodes) == 1:
+            return None
+
+        if n == len(nodes):
+            return head.next
+
+        nodes[-n - 1].next = nodes[-n].next
+
+        return head
+```

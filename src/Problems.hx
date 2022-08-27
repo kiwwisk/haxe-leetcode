@@ -40,6 +40,28 @@ class ListNode {
 	}
 }
 
+function leetcode_remove_nth_node_from_end_of_list(head:ListNode, n:Int):Null<ListNode> {
+	// https://leetcode.com/problems/remove-nth-node-from-end-of-list/
+
+	var cur = head;
+	var nodes:Array<ListNode> = [];
+
+	while (cur != null) {
+		nodes.push(cur);
+		cur = cur.next;
+	}
+
+	if (nodes.length == 1)
+		return null;
+
+	if (nodes.length == n)
+		return head.next;
+
+	nodes[nodes.length - n - 1].next = nodes[nodes.length - n].next;
+
+	return head;
+}
+
 function leetcode_4sum(nums:Array<Int>, target:Int):Array<String> {
 	// https://leetcode.com/problems/4sum/
 

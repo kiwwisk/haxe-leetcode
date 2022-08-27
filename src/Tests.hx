@@ -2,6 +2,49 @@ package;
 
 import Problems;
 
+function test_leetcode_remove_nth_node_from_end_of_list() {
+	var results:Array<String> = [];
+
+	switch ([
+		for (v in leetcode_remove_nth_node_from_end_of_list(ListNode.from_int_array([1, 2]), 1))
+			v.val
+	]) {
+		case [1]:
+			results.push('OK');
+		case _:
+			results.push('Error');
+	};
+
+	switch ([
+		for (v in leetcode_remove_nth_node_from_end_of_list(ListNode.from_int_array([1, 2]), 2))
+			v.val
+	]) {
+		case [2]:
+			results.push('OK');
+		case _:
+			results.push('Error');
+	};
+
+	switch ([
+		for (v in leetcode_remove_nth_node_from_end_of_list(ListNode.from_int_array([1, 2, 3, 4, 5]), 2))
+			v.val
+	]) {
+		case [1, 2, 3, 5]:
+			results.push('OK');
+		case _:
+			results.push('Error');
+	};
+
+	switch (leetcode_remove_nth_node_from_end_of_list(ListNode.from_int_array([1]), 1)) {
+		case null:
+			results.push('OK');
+		case _:
+			results.push('Error');
+	};
+
+	trace('Testing Remove Nth Node From End of List : ' + results.join(', '));
+}
+
 function test_leetcode_4sum() {
 	var results:Array<String> = [];
 

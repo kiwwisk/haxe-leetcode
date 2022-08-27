@@ -2,6 +2,39 @@ package;
 
 import Problems;
 
+function test_leetcode_merge_two_sorted_lists() {
+	var results:Array<String> = [];
+
+	switch ([
+		for (v in leetcode_merge_two_sorted_lists(ListNode.from_int_array([1, 2, 4]), ListNode.from_int_array([1, 3, 4])))
+			v.val
+	]) {
+		case [1, 1, 2, 3, 4, 4]:
+			results.push('OK');
+		case _:
+			results.push('Error');
+	};
+
+	switch (leetcode_merge_two_sorted_lists(null, null)) {
+		case null:
+			results.push('OK');
+		case _:
+			results.push('Error');
+	};
+
+	switch ([
+		for (v in leetcode_merge_two_sorted_lists(null, ListNode.from_int_array([0])))
+			v.val
+	]) {
+		case [0]:
+			results.push('OK');
+		case _:
+			results.push('Error');
+	};
+
+	trace('Testing Merge Two Sorted Lists : ' + results.join(', '));
+}
+
 function test_leetcode_valid_parentheses() {
 	var results:Array<String> = [];
 

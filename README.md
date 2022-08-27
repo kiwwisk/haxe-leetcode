@@ -582,3 +582,43 @@ class Solution:
 
         return len(opening) == 0
 ```
+
+## Solution 21
+
+https://leetcode.com/problems/merge-two-sorted-lists/
+
+### Solution in Python
+
+```py
+# Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
+
+
+class Solution:
+    def mergeTwoLists(self, list1: Optional[ListNode], list2: Optional[ListNode]) -> Optional[ListNode]:
+
+        lst = []
+
+        while list1:
+            lst.append(list1)
+            list1 = list1.next
+
+        while list2:
+            lst.append(list2)
+            list2 = list2.next
+
+        if len(lst) == 0:
+            return None
+
+        lst.sort(key=lambda i: i.val)
+
+        for i in range(1, len(lst)):
+            lst[i-1].next = lst[i]
+
+        lst[-1].next = None
+
+        return lst[0]
+```

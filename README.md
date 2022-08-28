@@ -752,3 +752,16 @@ class Solution:
 
         return head
 ```
+
+## Solution 26
+
+https://leetcode.com/problems/remove-duplicates-from-sorted-array/
+
+## Solution in Python
+
+```py
+class Solution:
+    def removeDuplicates(self, nums: List[int]) -> int:
+        nums[:] = dict.fromkeys(nums)  # in Python 3.6+ keys are kept in insertion order
+        return len(nums)
+```

@@ -40,6 +40,23 @@ class ListNode {
 	}
 }
 
+function leetcode_remove_duplicates_from_sorted_array(nums:Array<Int>):Int {
+	// https://leetcode.com/problems/remove-duplicates-from-sorted-array/
+
+	final m:Map<Int, Bool> = [];
+	for (n in nums)
+		m[n] = true;
+
+	final keys = [for (k in m.keys()) k];
+	keys.sort((i1, i2) -> i1 - i2);
+
+	var i = 0;
+	for (key in keys)
+		nums[i++] = key;
+
+	return i;
+}
+
 function leetcode_reverse_nodes_in_k_group(?head:ListNode, k:Int):Null<ListNode> {
 	// https://leetcode.com/problems/reverse-nodes-in-k-group/
 

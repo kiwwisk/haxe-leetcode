@@ -2,6 +2,36 @@ package;
 
 import Problems;
 
+function test_leetcode_remove_duplicates_from_sorted_array() {
+	var results:Array<String> = [];
+
+	var tmp = [-1, 0, 0, 0, 0, 3, 3];
+
+	switch leetcode_remove_duplicates_from_sorted_array(tmp) {
+		case 3:
+			if (tmp.slice(0, 3).join(',') == '-1,0,3')
+				results.push('OK');
+			else
+				results.push('Error');
+		case _:
+			results.push('Error');
+	}
+
+	tmp = [0, 0, 1, 1, 1, 2, 2, 3, 3, 4];
+
+	switch leetcode_remove_duplicates_from_sorted_array(tmp) {
+		case 5:
+			if (tmp.slice(0, 5).join(',') == '0,1,2,3,4')
+				results.push('OK');
+			else
+				results.push('Error');
+		case _:
+			results.push('Error');
+	}
+
+	trace('Testing Remove Duplicates from Sorted Array : ' + results.join(', '));
+}
+
 function test_leetcode_reverse_nodes_in_k_group() {
 	var results:Array<String> = [];
 

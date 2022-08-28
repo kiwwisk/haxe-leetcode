@@ -683,3 +683,36 @@ class Solution:
 
         return lst[0]
 ```
+
+## Solution 24
+
+https://leetcode.com/problems/swap-nodes-in-pairs/
+
+### Solution in Python
+
+```py
+# Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
+class Solution:
+    def swapPairs(self, head: Optional[ListNode]) -> Optional[ListNode]:
+
+        cur, lst = head, []
+        while cur:
+            lst.append(cur)
+            cur = cur.next
+
+        if len(lst) == 0:
+            return None
+
+        if len(lst) == 1:
+            return head
+
+        i = iter(lst)
+        for a, b in zip(i, i):
+            a.val, b.val = b.val, a.val
+
+        return head
+```

@@ -2,6 +2,49 @@ package;
 
 import Problems;
 
+function test_leetcode_swap_nodes_in_pairs() {
+	var results:Array<String> = [];
+
+	switch ([
+		for (v in leetcode_swap_nodes_in_pairs(ListNode.from_int_array([1, 2, 3, 4])))
+			v.val
+	]) {
+		case [2, 1, 4, 3]:
+			results.push('OK');
+		case _:
+			results.push('Error');
+	};
+
+	switch ([
+		for (v in leetcode_swap_nodes_in_pairs(ListNode.from_int_array([1, 2, 3, 4, 5])))
+			v.val
+	]) {
+		case [2, 1, 4, 3, 5]:
+			results.push('OK');
+		case _:
+			results.push('Error');
+	};
+
+	switch ([
+		for (v in leetcode_swap_nodes_in_pairs(ListNode.from_int_array([1])))
+			v.val
+	]) {
+		case [1]:
+			results.push('OK');
+		case _:
+			results.push('Error');
+	};
+
+	switch (leetcode_swap_nodes_in_pairs(null)) {
+		case null:
+			results.push('OK');
+		case _:
+			results.push('Error');
+	};
+
+	trace('Testing Swap Nodes in Pairs : ' + results.join(', '));
+}
+
 function test_leetcode_merge_k_sorted_lists() {
 	var results:Array<String> = [];
 

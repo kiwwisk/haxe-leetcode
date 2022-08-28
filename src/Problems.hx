@@ -40,6 +40,32 @@ class ListNode {
 	}
 }
 
+function leetcode_swap_nodes_in_pairs(?head:ListNode):Null<ListNode> {
+	// https://leetcode.com/problems/swap-nodes-in-pairs/
+
+	final lst:Array<ListNode> = [];
+	var cur = head;
+	while (cur != null) {
+		lst.push(cur);
+		cur = cur.next;
+	}
+
+	if (lst.length == 0)
+		return null;
+
+	if (lst.length == 1)
+		return head;
+
+	for (i in 0...Math.floor(lst.length / 2)) {
+		var _i = i * 2;
+		var tmp = lst[_i + 1].val;
+		lst[_i + 1].val = lst[_i].val;
+		lst[_i].val = tmp;
+	}
+
+	return head;
+}
+
 function leetcode_merge_k_sorted_lists(lists:Array<ListNode>):Null<ListNode> {
 	// https://leetcode.com/problems/merge-k-sorted-lists/
 

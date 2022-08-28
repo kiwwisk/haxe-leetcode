@@ -40,6 +40,36 @@ class ListNode {
 	}
 }
 
+function leetcode_merge_k_sorted_lists(lists:Array<ListNode>):Null<ListNode> {
+	// https://leetcode.com/problems/merge-k-sorted-lists/
+
+	if (lists == null)
+		return null;
+
+	final lst:Array<ListNode> = [];
+
+	for (l in lists)
+		while (l != null) {
+			lst.push(l);
+			l = l.next;
+		}
+
+	if (lst.length == 0)
+		return null;
+
+	if (lst.length == 1)
+		return lst[0];
+
+	lst.sort((node1, node2) -> node1.val - node2.val);
+
+	for (i in 1...lst.length)
+		lst[i - 1].next = lst[i];
+
+	lst[lst.length - 1].next = null;
+
+	return lst[0];
+}
+
 function leetcode_generate_parentheses(n:Int):Array<String> {
 	// https://leetcode.com/problems/generate-parentheses/
 

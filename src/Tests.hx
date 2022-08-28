@@ -2,6 +2,39 @@ package;
 
 import Problems;
 
+function test_leetcode_merge_k_sorted_lists() {
+	var results:Array<String> = [];
+
+	final tmp1:Array<ListNode> = [
+		ListNode.from_int_array([1, 4, 5]),
+		ListNode.from_int_array([1, 3, 4]),
+		ListNode.from_int_array([2, 6])
+	];
+
+	switch ([for (v in leetcode_merge_k_sorted_lists(tmp1)) v.val]) {
+		case [1, 1, 2, 3, 4, 4, 5, 6]:
+			results.push('OK');
+		case _:
+			results.push('Error');
+	};
+
+	switch (leetcode_merge_k_sorted_lists(null)) {
+		case null:
+			results.push('OK');
+		case _:
+			results.push('Error');
+	};
+
+	switch (leetcode_merge_k_sorted_lists([null])) {
+		case null:
+			results.push('OK');
+		case _:
+			results.push('Error');
+	};
+
+	trace('Testing Merge k Sorted Lists : ' + results.join(', '));
+}
+
 function test_leetcode_generate_parentheses() {
 	var results:Array<String> = [];
 

@@ -29,5 +29,6 @@ class Main {
 		test_leetcode_reverse_nodes_in_k_group();
 		test_leetcode_remove_duplicates_from_sorted_array();
 		test_leetcode_remove_element();
+		test_leetcode_implement_strstr();
 	}
 }

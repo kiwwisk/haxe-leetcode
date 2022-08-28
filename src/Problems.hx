@@ -40,6 +40,24 @@ class ListNode {
 	}
 }
 
+function leetcode_implement_strstr(haystack:String, needle:String):Int {
+	// https://leetcode.com/problems/implement-strstr/
+
+	final n = needle.length;
+
+	if (n == 0)
+		return 0;
+
+	if (n > haystack.length)
+		return -1;
+
+	for (i in 0...haystack.length - n + 1)
+		if (haystack.substr(i, n) == needle)
+			return i;
+
+	return -1;
+}
+
 function leetcode_remove_element(nums:Array<Int>, val:Int):Int {
 	// https://leetcode.com/problems/remove-element/
 

@@ -778,3 +778,27 @@ class Solution:
         nums[:] = [v for v in nums if v != val]
         return len(nums)
 ```
+
+## Solution 28
+
+https://leetcode.com/problems/implement-strstr/
+
+### Solution in Python
+
+```py
+class Solution:
+    def strStr(self, haystack: str, needle: str) -> int:
+        n = len(needle)
+
+        if n == 0:
+            return 0
+
+        if n > len(haystack):
+            return -1
+
+        for i in range(len(haystack) - n + 1):
+            if haystack[i:i+n] == needle:
+                return i
+
+        return -1
+```

@@ -2,6 +2,33 @@ package;
 
 import Problems;
 
+function test_leetcode_implement_strstr() {
+	var results:Array<String> = [];
+
+	switch leetcode_implement_strstr("hello", "ll") {
+		case 2:
+			results.push('OK');
+		case _:
+			results.push('Error');
+	}
+
+	switch leetcode_implement_strstr("aaaaa", "bba") {
+		case -1:
+			results.push('OK');
+		case _:
+			results.push('Error');
+	}
+
+	switch leetcode_implement_strstr("a", "a") {
+		case 0:
+			results.push('OK');
+		case _:
+			results.push('Error');
+	}
+
+	trace('Testing Implement strStr() : ' + results.join(', '));
+}
+
 function test_leetcode_remove_element() {
 	var results:Array<String> = [];
 

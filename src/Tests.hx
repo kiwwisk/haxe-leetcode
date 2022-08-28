@@ -2,6 +2,36 @@ package;
 
 import Problems;
 
+function test_leetcode_remove_element() {
+	var results:Array<String> = [];
+
+	var tmp = [3, 2, 2, 3];
+
+	switch leetcode_remove_element(tmp, 3) {
+		case 2:
+			if (tmp.slice(0, 2).join(',') == '2,2')
+				results.push('OK');
+			else
+				results.push('Error');
+		case _:
+			results.push('Error');
+	}
+
+	tmp = [0, 1, 2, 2, 3, 0, 4, 2];
+
+	switch leetcode_remove_element(tmp, 2) {
+		case 5:
+			if (tmp.slice(0, 5).join(',') == '0,1,3,0,4')
+				results.push('OK');
+			else
+				results.push('Error');
+		case _:
+			results.push('Error');
+	}
+
+	trace('Testing Remove Element : ' + results.join(', '));
+}
+
 function test_leetcode_remove_duplicates_from_sorted_array() {
 	var results:Array<String> = [];
 

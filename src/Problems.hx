@@ -40,6 +40,17 @@ class ListNode {
 	}
 }
 
+function leetcode_remove_element(nums:Array<Int>, val:Int):Int {
+	// https://leetcode.com/problems/remove-element/
+
+	var i = 0;
+	for (n in nums)
+		if (n != val)
+			nums[i++] = n;
+
+	return i;
+}
+
 function leetcode_remove_duplicates_from_sorted_array(nums:Array<Int>):Int {
 	// https://leetcode.com/problems/remove-duplicates-from-sorted-array/
 

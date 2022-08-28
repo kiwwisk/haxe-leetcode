@@ -757,11 +757,24 @@ class Solution:
 
 https://leetcode.com/problems/remove-duplicates-from-sorted-array/
 
-## Solution in Python
+### Solution in Python
 
 ```py
 class Solution:
     def removeDuplicates(self, nums: List[int]) -> int:
         nums[:] = dict.fromkeys(nums)  # in Python 3.6+ keys are kept in insertion order
+        return len(nums)
+```
+
+## Solution 27
+
+https://leetcode.com/problems/remove-element/
+
+### Solution in Python
+
+```py
+class Solution:
+    def removeElement(self, nums: List[int], val: int) -> int:
+        nums[:] = [v for v in nums if v != val]
         return len(nums)
 ```

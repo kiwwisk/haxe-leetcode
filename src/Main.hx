@@ -26,5 +26,6 @@ class Main {
 		test_leetcode_generate_parentheses();
 		test_leetcode_merge_k_sorted_lists();
 		test_leetcode_swap_nodes_in_pairs();
+		test_leetcode_reverse_nodes_in_k_group();
 	}
 }

@@ -40,6 +40,35 @@ class ListNode {
 	}
 }
 
+function leetcode_reverse_nodes_in_k_group(?head:ListNode, k:Int):Null<ListNode> {
+	// https://leetcode.com/problems/reverse-nodes-in-k-group/
+
+	final lst:Array<ListNode> = [];
+	var cur = head;
+	while (cur != null) {
+		lst.push(cur);
+		cur = cur.next;
+	}
+
+	if (lst.length == 0)
+		return null;
+
+	if (lst.length == 1)
+		return head;
+
+	for (i in 0...Math.floor(lst.length / k)) {
+		final _from = i * k;
+		final _to = (i + 1) * k;
+
+		final slice = [for (node in lst.slice(_from, _to)) node.val];
+		slice.reverse();
+		for (idx => val in slice)
+			lst[_from + idx].val = val;
+	}
+
+	return head;
+}
+
 function leetcode_swap_nodes_in_pairs(?head:ListNode):Null<ListNode> {
 	// https://leetcode.com/problems/swap-nodes-in-pairs/
 

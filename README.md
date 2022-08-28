@@ -716,3 +716,39 @@ class Solution:
 
         return head
 ```
+
+## Solution 25
+
+https://leetcode.com/problems/reverse-nodes-in-k-group/
+
+### Solution in Python
+
+```py
+# Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
+class Solution:
+    def reverseKGroup(self, head: Optional[ListNode], k: int) -> Optional[ListNode]:
+
+        cur, lst = head, []
+
+        while cur:
+            lst.append(cur)
+            cur = cur.next
+
+        if len(lst) == 0:
+            return None
+
+        if len(lst) == 1:
+            return head
+
+        i = iter(lst)
+        for items in zip(*(i for _ in range(k))):
+            vals = [i.val for i in items]
+            for v, i in zip(reversed(vals), items):
+                i.val = v
+
+        return head
+```

@@ -2,6 +2,39 @@ package;
 
 import Problems;
 
+function test_leetcode_reverse_nodes_in_k_group() {
+	var results:Array<String> = [];
+
+	switch ([
+		for (v in leetcode_reverse_nodes_in_k_group(ListNode.from_int_array([1, 2, 3, 4, 5]), 2))
+			v.val
+	]) {
+		case [2, 1, 4, 3, 5]:
+			results.push('OK');
+		case _:
+			results.push('Error');
+	};
+
+	switch ([
+		for (v in leetcode_reverse_nodes_in_k_group(ListNode.from_int_array([1, 2, 3, 4, 5]), 3))
+			v.val
+	]) {
+		case [3, 2, 1, 4, 5]:
+			results.push('OK');
+		case _:
+			results.push('Error');
+	};
+
+	switch leetcode_reverse_nodes_in_k_group(null, 3) {
+		case null:
+			results.push('OK');
+		case _:
+			results.push('Error');
+	};
+
+	trace('Testing Reverse Nodes in k-Group : ' + results.join(', '));
+}
+
 function test_leetcode_swap_nodes_in_pairs() {
 	var results:Array<String> = [];
 

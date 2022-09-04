@@ -802,3 +802,36 @@ class Solution:
 
         return -1
 ```
+
+## Solution 29
+
+https://leetcode.com/problems/divide-two-integers/
+
+### Solution in Python
+
+```py
+class Solution:
+    def divide(self, dividend: int, divisor: int) -> int:
+        if abs(divisor) > abs(dividend):
+            return 0
+
+        sign1 = dividend < 0
+        sign2 = divisor < 0
+
+        dividend = abs(dividend)
+        divisor = abs(divisor)
+
+        i = 0
+        while (divisor << (i + 1)) < dividend:
+            i += 1
+
+        r = 2 ** i + self.divide(dividend - (divisor << i), divisor)
+        r = -r if (sign1 ^ sign2) else r
+
+        if r > 2147483647:
+            return 2147483647
+        elif r < -2147483648:
+            return -2147483648
+
+        return r
+```

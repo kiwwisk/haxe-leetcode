@@ -2,6 +2,33 @@ package;
 
 import Problems;
 
+function test_leetcode_divide_two_integers() {
+	var results:Array<String> = [];
+
+	switch leetcode_divide_two_integers(10, 3) {
+		case 3:
+			results.push('OK');
+		case _:
+			results.push('Error');
+	}
+
+	switch leetcode_divide_two_integers(7, -3) {
+		case -2:
+			results.push('OK');
+		case _:
+			results.push('Error');
+	}
+
+	switch leetcode_divide_two_integers(1, -2) {
+		case 0:
+			results.push('OK');
+		case _:
+			results.push('Error');
+	}
+
+	trace('Testing Divide Two Integers : ' + results.join(', '));
+}
+
 function test_leetcode_implement_strstr() {
 	var results:Array<String> = [];
 

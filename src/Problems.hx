@@ -40,6 +40,33 @@ class ListNode {
 	}
 }
 
+function leetcode_divide_two_integers(dividend:Int, divisor:Int):Int {
+	// https://leetcode.com/problems/divide-two-integers/
+
+	final abs_divisor = Std.int(Math.abs(divisor));
+	final abs_dividend = Std.int(Math.abs(dividend));
+
+	if (abs_divisor > abs_dividend)
+		return 0;
+
+	final sign1 = dividend < 0 ? 1 : 0;
+	final sign2 = divisor < 0 ? 1 : 0;
+
+	var i = 0;
+	while ((abs_divisor << (i + 1)) < abs_dividend)
+		i += 1;
+
+	var r = Std.int(Math.pow(2, i)) + leetcode_divide_two_integers(abs_dividend - (abs_divisor << i), abs_divisor);
+	r = (sign1 ^ sign2) > 0 ? -r : r;
+
+	if (r > 2147483647)
+		return 2147483647;
+	else if (r < -2147483648)
+		return -2147483648;
+
+	return r;
+}
+
 function leetcode_implement_strstr(haystack:String, needle:String):Int {
 	// https://leetcode.com/problems/implement-strstr/
 

@@ -30,5 +30,6 @@ class Main {
 		test_leetcode_remove_duplicates_from_sorted_array();
 		test_leetcode_remove_element();
 		test_leetcode_implement_strstr();
+		test_leetcode_divide_two_integers();
 	}
 }

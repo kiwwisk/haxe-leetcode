@@ -1,5 +1,24 @@
 package;
 
+// https://code.haxe.org/category/data-structures/step-iterator.html
+private class StepIterator {
+	var end:Int;
+	var step:Int;
+	var index:Int;
+
+	public inline function new(start:Int, end:Int, step:Int) {
+		this.index = start;
+		this.end = end;
+		this.step = step;
+	}
+
+	public inline function hasNext()
+		return index < end;
+
+	public inline function next()
+		return (index += step) - step;
+}
+
 private class ListNodeIterator {
 	var l:ListNode;
 
@@ -38,6 +57,50 @@ class ListNode {
 		}
 		return rv[0];
 	}
+}
+
+function leetcode_substring_with_concatenation_of_all_words(s:String, words:Array<String>):Array<Int> {
+	// https://leetcode.com/problems/substring-with-concatenation-of-all-words/
+
+	final c:Map<String, Int> = [];
+
+	for (w in words)
+		c[w] = c.exists(w) ? c[w] + 1 : 1;
+
+	final word_len = words[0].length;
+	final total_len = word_len * words.length;
+	final out:Array<Int> = [];
+
+	for (shift in 0...total_len)
+		for (sub_word in new StepIterator(shift, s.length - total_len + 1, total_len)) {
+			final c2:Map<String, Int> = [];
+			var exit = false;
+
+			for (i in 0...words.length) {
+				final w = s.substr(sub_word + i * word_len, word_len);
+				if (!c.exists(w)) {
+					exit = true;
+					break;
+				}
+				c2[w] = c2.exists(w) ? c2[w] + 1 : 1;
+			}
+
+			if (exit)
+				continue;
+
+			for (k => v in c2)
+				if (c[k] - v != 0) {
+					exit = true;
+					break;
+				}
+
+			if (exit)
+				continue;
+
+			out.push(sub_word);
+		}
+
+	return out;
 }
 
 function leetcode_divide_two_integers(dividend:Int, divisor:Int):Int {

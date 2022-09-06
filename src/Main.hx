@@ -31,5 +31,6 @@ class Main {
 		test_leetcode_remove_element();
 		test_leetcode_implement_strstr();
 		test_leetcode_divide_two_integers();
+		test_leetcode_substring_with_concatenation_of_all_words();
 	}
 }

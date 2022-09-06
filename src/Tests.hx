@@ -2,6 +2,33 @@ package;
 
 import Problems;
 
+function test_leetcode_substring_with_concatenation_of_all_words() {
+	var results:Array<String> = [];
+
+	switch leetcode_substring_with_concatenation_of_all_words("lingmindraboofooowingdingbarrwingmonkeypoundcake", ["fooo", "barr", "wing", "ding", "wing"]) {
+		case [13]:
+			results.push('OK');
+		case _:
+			results.push('Error');
+	}
+
+	switch leetcode_substring_with_concatenation_of_all_words("aaaaaaaaaaaaaa", ["aa", "aa"]) {
+		case [0, 4, 8, 1, 5, 9, 2, 6, 10, 3, 7]:
+			results.push('OK');
+		case _:
+			results.push('Error');
+	}
+
+	switch leetcode_substring_with_concatenation_of_all_words("ababababab", ["ababa", "babab"]) {
+		case [0]:
+			results.push('OK');
+		case _:
+			results.push('Error');
+	}
+
+	trace('Testing Divide Two Integers : ' + results.join(', '));
+}
+
 function test_leetcode_divide_two_integers() {
 	var results:Array<String> = [];
 

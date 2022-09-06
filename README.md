@@ -835,3 +835,48 @@ class Solution:
 
         return r
 ```
+
+## Solution 30
+
+https://leetcode.com/problems/substring-with-concatenation-of-all-words/
+
+### Solution in Python
+
+```py
+class Solution:
+    def findSubstring(self, s, words):
+        c = {}
+        for w in words:
+            c[w] = c.get(w, 0) + 1
+
+        word_len = len(words[0])
+        total_len = word_len * len(words)
+        out = []
+
+        for shift in range(total_len):
+            for sub_word in range(shift, len(s) - total_len + 1, total_len):
+                c2 = {}
+
+                exit = False
+                for i in range(len(words)):
+                    w = s[sub_word + i * word_len : sub_word + (i + 1) * word_len]
+                    if w not in c:
+                        exit = True
+                        break
+                    c2[w] = c2.get(w, 0) + 1
+
+                if exit:
+                    continue
+
+                for k, v in c2.items():
+                    if c[k] - v != 0:
+                        exit = True
+                        break
+
+                if exit:
+                    continue
+
+                out.append(sub_word)
+
+        return out
+```

@@ -1,5 +1,7 @@
 package;
 
+import haxe.ds.ArraySort;
+
 // https://code.haxe.org/category/data-structures/step-iterator.html
 private class StepIterator {
 	var end:Int;
@@ -57,6 +59,35 @@ class ListNode {
 		}
 		return rv[0];
 	}
+}
+
+function leetcode_next_permutation(nums:Array<Int>):Void {
+	// https://leetcode.com/problems/next-permutation/
+
+	if (nums.length == 1)
+		return;
+
+	var idx = nums.length;
+	while (--idx > 0) {
+		if (nums[idx - 1] < nums[idx]) {
+			var idx2 = nums.length;
+			while (--idx2 >= 0)
+				if (nums[idx2] > nums[idx - 1])
+					break;
+
+			final tmp = nums[idx2];
+			nums[idx2] = nums[idx - 1];
+			nums[idx - 1] = tmp;
+
+			final a = nums.slice(idx);
+			a.sort((i1, i2) -> i1 - i2);
+			for (i in idx...nums.length)
+				nums[i] = a[i - idx];
+			return;
+		}
+	}
+
+	nums.sort((i1, i2) -> i1 - i2);
 }
 
 function leetcode_substring_with_concatenation_of_all_words(s:String, words:Array<String>):Array<Int> {

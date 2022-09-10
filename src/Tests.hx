@@ -2,6 +2,48 @@ package;
 
 import Problems;
 
+function test_leetcode_next_permutation() {
+	var results:Array<String> = [];
+
+	var tmp = [1, 2, 3];
+	leetcode_next_permutation(tmp);
+	switch tmp {
+		case [1, 3, 2]:
+			results.push('OK');
+		case _:
+			results.push('Error');
+	}
+
+	tmp = [2, 3, 1];
+	leetcode_next_permutation(tmp);
+	switch tmp {
+		case [3, 1, 2]:
+			results.push('OK');
+		case _:
+			results.push('Error');
+	}
+
+	tmp = [3, 2, 1];
+	leetcode_next_permutation(tmp);
+	switch tmp {
+		case [1, 2, 3]:
+			results.push('OK');
+		case _:
+			results.push('Error');
+	}
+
+	tmp = [4, 2, 0, 2, 3, 2, 0];
+	leetcode_next_permutation(tmp);
+	switch tmp {
+		case [4, 2, 0, 3, 0, 2, 2]:
+			results.push('OK');
+		case _:
+			results.push('Error');
+	}
+
+	trace('Testing Next Permutation : ' + results.join(', '));
+}
+
 function test_leetcode_substring_with_concatenation_of_all_words() {
 	var results:Array<String> = [];
 

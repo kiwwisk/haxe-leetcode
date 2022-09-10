@@ -880,3 +880,35 @@ class Solution:
 
         return out
 ```
+
+## Solution 31
+
+https://leetcode.com/problems/next-permutation/
+
+### Solution in Python
+
+```py
+class Solution:
+    def nextPermutation(self, nums):
+        """
+        Do not return anything, modify nums in-place instead.
+        """
+
+        ln = len(nums)
+        if ln == 1:
+            return
+
+        for idx in range(ln - 1, 0, -1):
+            idx_minus_1 = idx - 1
+            if nums[idx_minus_1] < nums[idx]:
+
+                for idx2 in range(ln - 1, -1, -1):
+                    if nums[idx2] > nums[idx_minus_1]:
+                        break
+
+                nums[idx_minus_1], nums[idx2] = nums[idx2], nums[idx_minus_1]
+                nums[idx:] = sorted(nums[idx:])
+                return
+
+        nums.sort()
+```

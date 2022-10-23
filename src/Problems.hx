@@ -61,6 +61,32 @@ class ListNode {
 	}
 }
 
+function leetcode_longest_valid_parentheses(s:String):Int {
+	// https://leetcode.com/problems/longest-valid-parentheses/
+
+	final r1 = ~/\((X*)\)/g;
+	final r2 = ~/X+/;
+
+	if (s.length < 2)
+		return 0;
+
+	var old_s = s;
+	while (true) {
+		s = r1.replace(s, 'X$1X');
+		if (s == old_s)
+			break;
+		old_s = s;
+	}
+
+	var max = 0;
+	while (r2.match(s)) {
+		if (r2.matched(0).length > max)
+			max = r2.matched(0).length;
+		s = r2.matchedRight();
+	}
+	return max;
+}
+
 function leetcode_next_permutation(nums:Array<Int>):Void {
 	// https://leetcode.com/problems/next-permutation/
 

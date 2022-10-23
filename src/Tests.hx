@@ -2,6 +2,40 @@ package;
 
 import Problems;
 
+function test_leetcode_longest_valid_parentheses() {
+	var results:Array<String> = [];
+
+	switch leetcode_longest_valid_parentheses("(()") {
+		case 2:
+			results.push('OK');
+		case _:
+			results.push('Error');
+	}
+
+	switch leetcode_longest_valid_parentheses(")()())") {
+		case 4:
+			results.push('OK');
+		case _:
+			results.push('Error');
+	}
+
+	switch leetcode_longest_valid_parentheses("") {
+		case 0:
+			results.push('OK');
+		case _:
+			results.push('Error');
+	}
+
+	switch leetcode_longest_valid_parentheses("))((") {
+		case 0:
+			results.push('OK');
+		case _:
+			results.push('Error');
+	}
+
+	trace('Testing Longest Valid Parentheses : ' + results.join(', '));
+}
+
 function test_leetcode_next_permutation() {
 	var results:Array<String> = [];
 

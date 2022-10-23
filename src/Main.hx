@@ -33,5 +33,6 @@ class Main {
 		test_leetcode_divide_two_integers();
 		test_leetcode_substring_with_concatenation_of_all_words();
 		test_leetcode_next_permutation();
+		test_leetcode_longest_valid_parentheses();
 	}
 }

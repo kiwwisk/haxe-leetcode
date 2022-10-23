@@ -912,3 +912,30 @@ class Solution:
 
         nums.sort()
 ```
+
+## Solution 32
+
+https://leetcode.com/problems/longest-valid-parentheses/
+
+### Solution in Python
+
+```py
+import re
+
+r1 = re.compile(r'\((X*)\)')
+r2 = re.compile(r'X+')
+
+class Solution:
+    def longestValidParentheses(self, s):
+        if len(s) < 2:
+            return 0
+
+        old_s = s
+        while True:
+            s = r1.sub(lambda g: f'X{g.group(1)}X', s)
+            if s == old_s:
+                break
+            old_s = s
+
+        return len(max(r2.findall(s), key=len, default=''))
+```

@@ -2,6 +2,40 @@ package;
 
 import Problems;
 
+function test_leetcode_search_in_rotated_sorted_array() {
+	var results:Array<String> = [];
+
+	switch leetcode_search_in_rotated_sorted_array([4, 5, 6, 7, 0, 1, 2], 0) {
+		case 4:
+			results.push('OK');
+		case _:
+			results.push('Error');
+	}
+
+	switch leetcode_search_in_rotated_sorted_array([4, 5, 6, 7, 0, 1, 2], 3) {
+		case -1:
+			results.push('OK');
+		case _:
+			results.push('Error');
+	}
+
+	switch leetcode_search_in_rotated_sorted_array([1], 0) {
+		case -1:
+			results.push('OK');
+		case _:
+			results.push('Error');
+	}
+
+	switch leetcode_search_in_rotated_sorted_array([4, 5, 6, 7, 8, 1, 2, 3], 8) {
+		case 4:
+			results.push('OK');
+		case _:
+			results.push('Error');
+	}
+
+	trace('Testing Search in Rotated Sorted Array : ' + results.join(', '));
+}
+
 function test_leetcode_longest_valid_parentheses() {
 	var results:Array<String> = [];
 

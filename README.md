@@ -939,3 +939,51 @@ class Solution:
 
         return len(max(r2.findall(s), key=len, default=''))
 ```
+
+## Solution 33
+
+https://leetcode.com/problems/search-in-rotated-sorted-array/
+
+### Solution in Python
+
+```py
+class Solution:
+    def search(self, nums, target):
+        if len(nums) == 1:
+            if nums[0] == target:
+                return 0
+            else:
+                return -1
+
+        left, right = 0, len(nums) - 1
+
+        while left <= right:
+            mid = (left + right) // 2
+            n_mid, n_left, n_right = nums[mid], nums[left], nums[right]
+
+            if n_mid == target:
+                return mid
+            elif n_left == target:
+                return left
+            elif n_right == target:
+                return right
+
+            if n_left > n_right:
+                if n_mid > n_left:
+                    if n_left < target < n_mid:
+                        right = mid - 1
+                    else:
+                        left = mid + 1
+                else:
+                    if n_mid < target < n_left:
+                        left = mid + 1
+                    else:
+                        right = mid - 1
+            # standard binary search:
+            else:
+                if n_mid < target:
+                    left = mid + 1
+                else:
+                    right = mid - 1
+        return -1
+```

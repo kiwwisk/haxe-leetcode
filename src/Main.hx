@@ -34,5 +34,6 @@ class Main {
 		test_leetcode_substring_with_concatenation_of_all_words();
 		test_leetcode_next_permutation();
 		test_leetcode_longest_valid_parentheses();
+		test_leetcode_search_in_rotated_sorted_array();
 	}
 }

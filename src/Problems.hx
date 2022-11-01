@@ -61,6 +61,53 @@ class ListNode {
 	}
 }
 
+function leetcode_search_in_rotated_sorted_array(nums:Array<Int>, target:Int):Int {
+	// https://leetcode.com/problems/search-in-rotated-sorted-array/
+
+	if (nums.length == 1)
+		return nums[0] == target ? 0 : -1;
+
+	var left = 0;
+	var right = nums.length - 1;
+
+	while (left <= right) {
+		final mid = Std.int((left + right) / 2);
+
+		final n_mid = nums[mid];
+		final n_left = nums[left];
+		final n_right = nums[right];
+
+		if (n_mid == target)
+			return mid;
+		else if (n_left == target)
+			return left;
+		else if (n_right == target)
+			return right;
+
+		if (n_left > n_right) {
+			if (n_mid > n_left) {
+				if ((n_left < target) && (target < n_mid))
+					right = mid - 1;
+				else
+					left = mid + 1;
+			} else {
+				if ((n_mid < target) && (target < n_left))
+					left = mid + 1;
+				else
+					right = mid - 1;
+			}
+		} else {
+			// standard binary search:
+			if (n_mid < target)
+				left = mid + 1;
+			else
+				right = mid - 1;
+		}
+	}
+
+	return -1;
+}
+
 function leetcode_longest_valid_parentheses(s:String):Int {
 	// https://leetcode.com/problems/longest-valid-parentheses/
 

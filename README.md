@@ -1030,3 +1030,29 @@ class Solution:
         r_left = right + 1
         return [r_left, r_right]
 ```
+
+## Solution 35
+
+https://leetcode.com/problems/search-insert-position/
+
+### Solution in Python
+
+```py
+class Solution:
+    def searchInsert(self, nums: List[int], target: int) -> int:
+
+        left, right = 0, len(nums) - 1
+
+        while left <= right:
+            mid = (left + right) // 2
+
+            if nums[mid] == target:
+                return mid
+
+            if nums[mid] < target:
+                left = mid + 1
+            else:
+                right = mid - 1
+
+        return left
+```

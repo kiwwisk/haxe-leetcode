@@ -61,6 +61,27 @@ class ListNode {
 	}
 }
 
+function leetcode_search_insert_position(nums:Array<Int>, target:Int):Int {
+	// https://leetcode.com/problems/search-insert-position/
+
+	var left = 0;
+	var right = nums.length - 1;
+
+	while (left <= right) {
+		final mid = Std.int((left + right) / 2);
+
+		if (nums[mid] == target)
+			return mid;
+
+		if (nums[mid] < target)
+			left = mid + 1;
+		else
+			right = mid - 1;
+	}
+
+	return left;
+}
+
 function leetcode_find_first_and_last_position_of_element_in_sorted_array(nums:Array<Int>, target:Int):Array<Int> {
 	// https://leetcode.com/problems/find-first-and-last-position-of-element-in-sorted-array/
 

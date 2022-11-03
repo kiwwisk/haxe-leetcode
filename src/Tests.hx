@@ -2,6 +2,40 @@ package;
 
 import Problems;
 
+function test_leetcode_search_insert_position() {
+	var results:Array<String> = [];
+
+	switch leetcode_search_insert_position([1, 3, 5, 6], 5) {
+		case 2:
+			results.push('OK');
+		case _:
+			results.push('Error');
+	}
+
+	switch leetcode_search_insert_position([1, 3, 5, 6], 2) {
+		case 1:
+			results.push('OK');
+		case _:
+			results.push('Error');
+	}
+
+	switch leetcode_search_insert_position([1, 3, 5, 6], 7) {
+		case 4:
+			results.push('OK');
+		case _:
+			results.push('Error');
+	}
+
+	switch leetcode_search_insert_position([1, 3, 5, 6], 1) {
+		case 0:
+			results.push('OK');
+		case _:
+			results.push('Error');
+	}
+
+	trace('Testing Search Insert Position : ' + results.join(', '));
+}
+
 function test_leetcode_find_first_and_last_position_of_element_in_sorted_array() {
 	var results:Array<String> = [];
 

@@ -987,3 +987,46 @@ class Solution:
                     right = mid - 1
         return -1
 ```
+
+## Solution 34
+
+https://leetcode.com/problems/find-first-and-last-position-of-element-in-sorted-array/
+
+### Solution in Python
+
+```py
+class Solution:
+    def searchRange(self, nums, target):
+        if len(nums) == 0:
+            return [-1, -1]
+
+        # find right
+        left, right = 0, len(nums) - 1
+
+        while left <= right:
+            mid = (left + right) // 2
+
+            if target >= nums[mid]:
+                left = mid + 1
+            else:
+                right = mid - 1
+
+        r_right = left - 1
+
+        if r_right < 0 or nums[r_right] != target:
+            return [-1, -1]
+
+        # find left
+        left, right = 0, r_right
+
+        while left <= right:
+            mid = (left + right) // 2
+
+            if target > nums[mid]:
+                left = mid + 1
+            else:
+                right = mid - 1
+
+        r_left = right + 1
+        return [r_left, r_right]
+```

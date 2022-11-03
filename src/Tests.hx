@@ -2,6 +2,33 @@ package;
 
 import Problems;
 
+function test_leetcode_find_first_and_last_position_of_element_in_sorted_array() {
+	var results:Array<String> = [];
+
+	switch leetcode_find_first_and_last_position_of_element_in_sorted_array([5, 7, 7, 8, 8, 10], 8) {
+		case [3, 4]:
+			results.push('OK');
+		case _:
+			results.push('Error');
+	}
+
+	switch leetcode_find_first_and_last_position_of_element_in_sorted_array([5, 7, 7, 8, 8, 10], 6) {
+		case [-1, -1]:
+			results.push('OK');
+		case _:
+			results.push('Error');
+	}
+
+	switch leetcode_find_first_and_last_position_of_element_in_sorted_array([], 6) {
+		case [-1, -1]:
+			results.push('OK');
+		case _:
+			results.push('Error');
+	}
+
+	trace('Testing Find First and Last Position of Element in Sorted Array : ' + results.join(', '));
+}
+
 function test_leetcode_search_in_rotated_sorted_array() {
 	var results:Array<String> = [];
 

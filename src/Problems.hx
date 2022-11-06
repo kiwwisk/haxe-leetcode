@@ -61,6 +61,31 @@ class ListNode {
 	}
 }
 
+function leetcode_valid_sudoku(board:Array<Array<String>>):Bool {
+	// https://leetcode.com/problems/valid-sudoku/
+
+	final pat = ~/(\d).*\1/;
+
+	// check rows:
+	for (row in board)
+		if (pat.match(row.join('')))
+			return false;
+
+	// check columns:
+	for (c in 0...9)
+		if (pat.match([for (r in 0...9) board[r][c]].join('')))
+			return false;
+
+	// check 3x3-blocks:
+	for (x in new StepIterator(0, 9, 3))
+		for (y in new StepIterator(0, 9, 3))
+			if (pat.match([for (x1 in x...x + 3) for (y1 in y...y + 3) board[x1][y1]].join('')))
+				return false;
+
+	// all ok, return True
+	return true;
+}
+
 function leetcode_search_insert_position(nums:Array<Int>, target:Int):Int {
 	// https://leetcode.com/problems/search-insert-position/
 

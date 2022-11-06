@@ -1056,3 +1056,40 @@ class Solution:
 
         return left
 ```
+
+## Solution 36
+
+https://leetcode.com/problems/valid-sudoku/
+
+### Solution in Python
+
+```py
+import re
+
+class Solution:
+    pat = re.compile(r"(\d).*\1")
+
+    def isValidSudoku(self, board: List[List[str]]) -> bool:
+        if any(Solution.pat.search("".join(row)) for row in board):
+            return False
+
+        if any(
+            Solution.pat.search("".join(board[r][c] for r in range(9))) for c in range(9)
+        ):
+            return False
+
+        if any(
+            Solution.pat.search(
+                "".join(
+                    board[x1][y1]
+                    for x1 in range(x, x + 3)
+                    for y1 in range(y, y + 3)
+                )
+            )
+            for x in range(0, 9, 3)
+            for y in range(0, 9, 3)
+        ):
+            return False
+
+        return True
+```

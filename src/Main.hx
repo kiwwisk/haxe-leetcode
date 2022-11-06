@@ -37,5 +37,6 @@ class Main {
 		test_leetcode_search_in_rotated_sorted_array();
 		test_leetcode_find_first_and_last_position_of_element_in_sorted_array();
 		test_leetcode_search_insert_position();
+		test_leetcode_valid_sudoku();
 	}
 }

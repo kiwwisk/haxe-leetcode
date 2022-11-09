@@ -1093,3 +1093,50 @@ class Solution:
 
         return True
 ```
+
+## Solution 37
+
+https://leetcode.com/problems/sudoku-solver/
+
+### Solution in Python
+
+```py
+def possible(board, row, column, number):
+
+    if any(board[row][i] == number for i in range(9)):
+        return False
+
+    if any(board[i][column] == number for i in range(9)):
+        return False
+
+    r_start = (row // 3) * 3
+    c_start = (column // 3) * 3
+
+    for i in range(r_start, r_start + 3):
+        for j in range(c_start, c_start + 3):
+            if board[i][j] == number:
+                return False
+
+    return True
+
+
+class Solution:
+    def solveSudoku(self, board):
+        def _fn():
+            for row in range(9):
+                for column in range(9):
+                    if board[row][column] != ".":
+                        continue
+
+                    for number in "123456789":
+                        if possible(board, row, column, number):
+                            board[row][column] = number
+                            yield from _fn()
+                            board[row][column] = "."
+
+                    return  # dead-end
+
+            yield
+
+        next(_fn())
+```

@@ -1,5 +1,6 @@
 package;
 
+import haxe.Exception;
 import haxe.ds.ArraySort;
 
 // https://code.haxe.org/category/data-structures/step-iterator.html
@@ -58,6 +59,57 @@ class ListNode {
 			rv[i].next = rv[i + 1];
 		}
 		return rv[0];
+	}
+}
+
+function leetcode_sudoku_solver(board:Array<Array<String>>):Void {
+	// https://leetcode.com/problems/sudoku-solver/
+
+	final numbers = "123456789".split("");
+
+	function _possible(row, column, number) {
+		for (i in 0...9)
+			if (board[row][i] == number)
+				return false;
+
+		for (i in 0...9)
+			if (board[i][column] == number)
+				return false;
+
+		final r_start = Std.int(row / 3) * 3;
+		final c_start = Std.int(column / 3) * 3;
+
+		for (i in r_start...r_start + 3)
+			for (j in c_start...c_start + 3)
+				if (board[i][j] == number)
+					return false;
+
+		return true;
+	}
+
+	function _solve() {
+		for (row in 0...9)
+			for (column in 0...9) {
+				if (board[row][column] != ".")
+					continue;
+
+				for (number in numbers)
+					if (_possible(row, column, number)) {
+						board[row][column] = number;
+						_solve();
+						board[row][column] = ".";
+					}
+				return; // dead-end
+			}
+
+		// all cells are filled, hence solution is found
+		throw new Exception('Solution Found');
+	}
+
+	try {
+		_solve();
+	} catch (e) {
+		return;
 	}
 }
 

@@ -62,6 +62,30 @@ class ListNode {
 	}
 }
 
+function leetcode_combination_sum(candidates:Array<Int>, target:Int):Array<Array<Int>> {
+	// https://leetcode.com/problems/combination-sum/
+
+	final rv:Array<Array<Int>> = [];
+	final current:Array<Int> = [];
+
+	function get_sum(start_index = 0, cur_sum = 0) {
+		for (i in start_index...candidates.length) {
+			current.push(candidates[i]);
+
+			final new_sum = cur_sum + candidates[i];
+			if (new_sum == target)
+				rv.push(current.copy());
+			else if (new_sum < target)
+				get_sum(i, new_sum);
+
+			current.pop();
+		}
+	}
+
+	get_sum();
+	return rv;
+}
+
 function leetcode_count_and_say(n:Int):String {
 	// https://leetcode.com/problems/count-and-say/
 

@@ -1145,7 +1145,7 @@ class Solution:
 
 https://leetcode.com/problems/count-and-say/
 
-## Solution in Python
+### Solution in Python
 
 ```py
 class Solution:
@@ -1172,4 +1172,32 @@ class Solution:
             return say(steps - 1, get_string(current))
 
         return say(n)
+```
+
+## Solution 39
+
+https://leetcode.com/problems/combination-sum/
+
+### Solution in Python
+
+```py
+class Solution:
+    def combinationSum(self, candidates, target):
+
+        rv, current = [], []
+
+        def get_sum(start_index=0, cur_sum=0):
+            for i in range(start_index, len(candidates)):
+                current.append(candidates[i])
+                new_sum = cur_sum + candidates[i]
+
+                if new_sum == target:
+                    rv.append(current[:])
+                elif new_sum < target:
+                    get_sum(i, new_sum)
+
+                current.pop()
+
+        get_sum()
+        return rv
 ```

@@ -62,6 +62,35 @@ class ListNode {
 	}
 }
 
+function leetcode_count_and_say(n:Int):String {
+	// https://leetcode.com/problems/count-and-say/
+
+	function get_string(s:String):String {
+		if (s.length == 1)
+			return '1${s}';
+
+		var out:String = "";
+		var start = 0;
+
+		for (i in 1...s.length)
+			if (s.charAt(i) != s.charAt(i - 1)) {
+				out = '${out}${i - start}${s.charAt(i - 1)}';
+				start = i;
+			}
+
+		return '${out}${s.length - start}${s.charAt(s.length - 1)}';
+	}
+
+	function say(steps:Int, current:String = "1"):String {
+		if (steps == 1)
+			return current;
+
+		return say(steps - 1, get_string(current));
+	}
+
+	return say(n);
+}
+
 function leetcode_sudoku_solver(board:Array<Array<String>>):Void {
 	// https://leetcode.com/problems/sudoku-solver/
 

@@ -1140,3 +1140,36 @@ class Solution:
 
         next(_fn())
 ```
+
+## Solution 38
+
+https://leetcode.com/problems/count-and-say/
+
+## Solution in Python
+
+```py
+class Solution:
+    def countAndSay(self, n: int) -> str:
+        def get_string(n):
+            if len(n) == 1:
+                return f"1{n}"
+
+            out, start = [], 0
+            for i in range(1, len(n)):
+                if n[i] != n[i - 1]:
+                    out.append((i - start, n[i - 1]))
+                    start = i
+
+            return (
+                "".join(f"{a}{b}" for a, b in out) + f"{i + 1 - start}{n[-1]}"
+            )
+
+
+        def say(steps, current="1"):
+            if steps == 1:
+                return current
+
+            return say(steps - 1, get_string(current))
+
+        return say(n)
+```

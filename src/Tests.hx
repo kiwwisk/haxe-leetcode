@@ -2,6 +2,33 @@ package;
 
 import Problems;
 
+function test_leetcode_count_and_say() {
+	var results:Array<String> = [];
+
+	switch leetcode_count_and_say(1) {
+		case "1":
+			results.push('OK');
+		case _:
+			results.push('Error');
+	}
+
+	switch leetcode_count_and_say(2) {
+		case "11":
+			results.push('OK');
+		case _:
+			results.push('Error');
+	}
+
+	switch leetcode_count_and_say(12) {
+		case "3113112221232112111312211312113211":
+			results.push('OK');
+		case _:
+			results.push('Error');
+	}
+
+	trace('Testing Count And Say : ' + results.join(', '));
+}
+
 function test_leetcode_sudoku_solver() {
 	var results:Array<String> = [];
 

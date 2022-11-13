@@ -39,5 +39,6 @@ class Main {
 		test_leetcode_search_insert_position();
 		test_leetcode_valid_sudoku();
 		test_leetcode_sudoku_solver();
+		test_leetcode_count_and_say();
 	}
 }

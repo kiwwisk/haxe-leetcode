@@ -1201,3 +1201,48 @@ class Solution:
         get_sum()
         return rv
 ```
+
+## Solution 40
+
+https://leetcode.com/problems/combination-sum-ii/
+
+### Solution in Python
+
+```py
+class Solution:
+    def combinationSum2(self, candidates, target):
+
+        candidates.sort()
+
+        rv, seen, skips, current = [], set(), set(), []
+
+        def get_sum(start_index=0, cur_sum=0):
+            if start_index >= len(candidates):
+                skips.add(current[0])
+                return
+
+            for i in range(start_index, len(candidates)):
+
+                if candidates[i] in skips:
+                    continue
+
+                current.append(candidates[i])
+                new_sum = cur_sum + candidates[i]
+
+                if new_sum == target:
+                    t = tuple(current)
+                    if t not in seen:
+                        seen.add(t)
+                        rv.append(current[:])
+                    current.pop()
+                    break
+                elif new_sum < target:
+                    get_sum(i + 1, new_sum)
+                    current.pop()
+                else:
+                    current.pop()
+                    break  # all other numbers are greater
+
+        get_sum()
+        return rv
+```

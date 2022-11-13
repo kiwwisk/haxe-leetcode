@@ -62,6 +62,52 @@ class ListNode {
 	}
 }
 
+function leetcode_combination_sum_ii(candidates:Array<Int>, target:Int):Array<Array<Int>> {
+	// https://leetcode.com/problems/combination-sum-ii/
+
+	candidates.sort((i1, i2) -> i1 - i2);
+
+	final rv:Array<Array<Int>> = [];
+	final current:Array<Int> = [];
+
+	final skips:Map<Int, Bool> = [];
+	final seen:Map<String, Bool> = [];
+
+	function get_sum(start_index = 0, cur_sum = 0) {
+		if (start_index >= candidates.length) {
+			skips[current[0]] = true;
+			return;
+		}
+
+		for (i in start_index...candidates.length) {
+			if (skips.exists(candidates[i]))
+				continue;
+
+			current.push(candidates[i]);
+			final new_sum = cur_sum + candidates[i];
+
+			if (new_sum == target) {
+				final s = current.join(',');
+				if (!seen.exists(s)) {
+					seen[s] = true;
+					rv.push(current.copy());
+				}
+				current.pop();
+				break;
+			} else if (new_sum < target) {
+				get_sum(i + 1, new_sum);
+				current.pop();
+			} else {
+				current.pop();
+				break;
+			}
+		}
+	}
+
+	get_sum();
+	return rv;
+}
+
 function leetcode_combination_sum(candidates:Array<Int>, target:Int):Array<Array<Int>> {
 	// https://leetcode.com/problems/combination-sum/
 

@@ -2,6 +2,33 @@ package;
 
 import Problems;
 
+function test_leetcode_combination_sum_ii() {
+	var results:Array<String> = [];
+
+	switch leetcode_combination_sum_ii([10, 1, 2, 7, 6, 1, 5], 8) {
+		case [[1, 1, 6], [1, 2, 5], [1, 7], [2, 6]]:
+			results.push('OK');
+		case _:
+			results.push('Error');
+	}
+
+	switch leetcode_combination_sum_ii([1, 1], 1) {
+		case [[1]]:
+			results.push('OK');
+		case _:
+			results.push('Error');
+	}
+
+	switch leetcode_combination_sum_ii([2, 5, 2, 1, 2], 5) {
+		case [[1, 2, 2], [5]]:
+			results.push('OK');
+		case _:
+			results.push('Error');
+	}
+
+	trace('Testing Combination Sum II : ' + results.join(', '));
+}
+
 function test_leetcode_combination_sum() {
 	var results:Array<String> = [];
 

@@ -108,6 +108,32 @@ function leetcode_combination_sum_ii(candidates:Array<Int>, target:Int):Array<Ar
 	return rv;
 }
 
+function leetcode_first_missing_positive(nums:Array<Int>):Int {
+	// https://leetcode.com/problems/first-missing-positive/
+
+	for (i in 0...nums.length)
+		if (nums[i] < 0)
+			nums[i] = 0;
+
+	// mark [0...len(nums)] with `-` sign that the number is present
+	for (i in 0...nums.length) {
+		final val = nums[i] < 0 ? -nums[i] : nums[i];
+
+		if ((val >= 1) && (val <= nums.length)) {
+			if (nums[val - 1] > 0)
+				nums[val - 1] *= -1; // mark it
+			else if (nums[val - 1] == 0)
+				nums[val - 1] = -(nums.length + 1);
+		}
+	}
+
+	for (i in 0...nums.length)
+		if (nums[i] >= 0)
+			return i + 1;
+
+	return nums.length + 1;
+}
+
 function leetcode_combination_sum(candidates:Array<Int>, target:Int):Array<Array<Int>> {
 	// https://leetcode.com/problems/combination-sum/
 

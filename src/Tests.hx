@@ -2,6 +2,33 @@ package;
 
 import Problems;
 
+function test_leetcode_first_missing_positive() {
+	var results:Array<String> = [];
+
+	switch leetcode_first_missing_positive([1, 2, 0]) {
+		case 3:
+			results.push('OK');
+		case _:
+			results.push('Error');
+	}
+
+	switch leetcode_first_missing_positive([3, 4, -1, 1]) {
+		case 2:
+			results.push('OK');
+		case _:
+			results.push('Error');
+	}
+
+	switch leetcode_first_missing_positive([7, 8, 9, 11, 12]) {
+		case 1:
+			results.push('OK');
+		case _:
+			results.push('Error');
+	}
+
+	trace('Testing First Missing Positive : ' + results.join(', '));
+}
+
 function test_leetcode_combination_sum_ii() {
 	var results:Array<String> = [];
 

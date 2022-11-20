@@ -1305,3 +1305,23 @@ class Solution:
 
         return volume
 ```
+
+## Solution 43
+
+https://leetcode.com/problems/multiply-strings/
+
+### Solution in Python
+
+```py
+class Solution:
+    def multiply(self, num1: str, num2: str) -> str:
+
+        def convert(s, ord_0 = ord('0')):
+            val, n = 0, 0
+            for i in range(len(s)-1, -1, -1):
+                val += (ord(s[i]) - ord_0) * (10 ** n)
+                n += 1
+            return val
+
+        return f'{convert(num1)*convert(num2)}'
+```

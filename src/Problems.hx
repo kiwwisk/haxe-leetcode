@@ -109,6 +109,25 @@ function leetcode_combination_sum_ii(candidates:Array<Int>, target:Int):Array<Ar
 	return rv;
 }
 
+function leetcode_multiply_strings(num1:String, num2:String):String {
+	// https://leetcode.com/problems/multiply-strings/
+
+	final ord_0 = '0'.charCodeAt(0);
+
+	function convert(s:String):Int {
+		var val = 0;
+		var n = 0;
+
+		var i = s.length;
+		while (i-- > 0)
+			val += (s.charCodeAt(i) - ord_0) * Std.int(Math.pow(10, n++));
+
+		return val;
+	}
+
+	return '${convert(num1) * convert(num2)}';
+}
+
 function leetcode_trapping_rain_water(height:Array<Int>):Int {
 	// https://leetcode.com/problems/trapping-rain-water/
 

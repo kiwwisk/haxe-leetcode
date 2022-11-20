@@ -2,6 +2,26 @@ package;
 
 import Problems;
 
+function test_leetcode_multiply_strings() {
+	var results:Array<String> = [];
+
+	switch leetcode_multiply_strings("2", "3") {
+		case "6":
+			results.push('OK');
+		case _:
+			results.push('Error');
+	}
+
+	switch leetcode_multiply_strings("123", "456") {
+		case "56088":
+			results.push('OK');
+		case _:
+			results.push('Error');
+	}
+
+	trace('Testing Multiply Strings : ' + results.join(', '));
+}
+
 function test_leetcode_trapping_rain_water() {
 	var results:Array<String> = [];
 

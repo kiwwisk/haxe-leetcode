@@ -1278,3 +1278,30 @@ class Solution:
 
         return len(nums) + 1
 ```
+
+## Solution 42
+
+https://leetcode.com/problems/trapping-rain-water/
+
+### Solution in Python
+
+```py
+class Solution:
+    def trap(self, height):
+        volume = 0
+
+        max_left = height[0]
+
+        current_max, max_right_heights = 0, [0] * len(height)
+        for i in range(len(height)-1, -1, -1):
+            if height[i] > current_max:
+                current_max = height[i]
+            max_right_heights[i] = current_max
+
+        for i in range(1, len(height) - 1):
+            max_left = max(max_left, height[i])
+            max_right = max_right_heights[i]
+            volume += min(max_left, max_right) - height[i]
+
+        return volume
+```

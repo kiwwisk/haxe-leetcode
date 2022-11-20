@@ -2,6 +2,26 @@ package;
 
 import Problems;
 
+function test_leetcode_trapping_rain_water() {
+	var results:Array<String> = [];
+
+	switch leetcode_trapping_rain_water([0, 1, 0, 2, 1, 0, 1, 3, 2, 1, 2, 1]) {
+		case 6:
+			results.push('OK');
+		case _:
+			results.push('Error');
+	}
+
+	switch leetcode_trapping_rain_water([4, 2, 0, 3, 2, 5]) {
+		case 9:
+			results.push('OK');
+		case _:
+			results.push('Error');
+	}
+
+	trace('Testing Trapping Rain Water : ' + results.join(', '));
+}
+
 function test_leetcode_first_missing_positive() {
 	var results:Array<String> = [];
 

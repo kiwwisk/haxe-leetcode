@@ -1,5 +1,6 @@
 package;
 
+import haxe.ds.Vector;
 import haxe.Exception;
 import haxe.ds.ArraySort;
 
@@ -106,6 +107,34 @@ function leetcode_combination_sum_ii(candidates:Array<Int>, target:Int):Array<Ar
 
 	get_sum();
 	return rv;
+}
+
+function leetcode_trapping_rain_water(height:Array<Int>):Int {
+	// https://leetcode.com/problems/trapping-rain-water/
+
+	var volume = 0;
+	var max_left = height[0];
+	var max_right = 0;
+
+	var current_max = 0;
+	final max_right_heights = new Vector<Int>(height.length);
+
+	var i = height.length;
+	while (i-- > 0) {
+		if (height[i] > current_max)
+			current_max = height[i];
+		max_right_heights[i] = current_max;
+	}
+
+	for (i in 1...height.length - 1) {
+		if (height[i] > max_left)
+			max_left = height[i];
+		max_right = max_right_heights[i];
+
+		volume += (max_left < max_right ? max_left : max_right) - height[i];
+	}
+
+	return volume;
 }
 
 function leetcode_first_missing_positive(nums:Array<Int>):Int {

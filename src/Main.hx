@@ -43,5 +43,6 @@ class Main {
 		test_leetcode_combination_sum();
 		test_leetcode_combination_sum_ii();
 		test_leetcode_first_missing_positive();
+		test_leetcode_trapping_rain_water();
 	}
 }

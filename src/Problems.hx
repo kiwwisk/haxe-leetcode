@@ -2,7 +2,8 @@ package;
 
 import haxe.ds.Vector;
 import haxe.Exception;
-import haxe.ds.ArraySort;
+
+using StringTools;
 
 // https://code.haxe.org/category/data-structures/step-iterator.html
 private class StepIterator {
@@ -107,6 +108,31 @@ function leetcode_combination_sum_ii(candidates:Array<Int>, target:Int):Array<Ar
 
 	get_sum();
 	return rv;
+}
+
+function leetcode_wildcard_matching(s:String, p:String):Bool {
+	// https://leetcode.com/problems/wildcard-matching/
+
+	p = ~/\*{2,}/g.replace(p, "*");
+	p = p.replace("?", ".") + "$";
+
+	final pats:Array<String> = [];
+	final ereg = ~/\*?[^*]+/;
+	while (ereg.match(p)) {
+		pats.push(ereg.matched(0).replace("*", ".*?"));
+		p = ereg.matchedRight();
+	}
+
+	var idx = 0;
+	for (p in pats) {
+		final e = new EReg(p, '');
+		if (e.match(s = s.substr(idx)))
+			idx += e.matched(0).length;
+		else
+			return false;
+	}
+
+	return true;
 }
 
 function leetcode_multiply_strings(num1:String, num2:String):String {

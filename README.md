@@ -1325,3 +1325,29 @@ class Solution:
 
         return f'{convert(num1)*convert(num2)}'
 ```
+
+## Solution 44
+
+https://leetcode.com/problems/wildcard-matching/
+
+### Solution in Python
+
+```py
+import re
+
+class Solution:
+    def isMatch(self, s: str, p: str) -> bool:
+        p = re.sub(r"\*{2,}", "*", p)
+        p = p.replace("?", ".") + "$"
+
+        pats = [pat.replace("*", ".*?") for pat in re.findall(r"\*?[^*]+", p)]
+
+        idx = 0
+        for p in pats:
+            m = re.match(p, s[idx:])
+            if not m:
+                return False
+            idx += m.end()
+
+        return True
+```

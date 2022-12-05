@@ -2,6 +2,34 @@ package;
 
 import Problems;
 
+function test_leetcode_wildcard_matching() {
+	var results:Array<String> = [];
+
+	switch leetcode_wildcard_matching("mississippi", "m??*ss*?i*pi") {
+		case false:
+			results.push('OK');
+		case _:
+			results.push('Error');
+	}
+
+	switch leetcode_wildcard_matching("abcabczzzde", "*abc???de*") {
+		case true:
+			results.push('OK');
+		case _:
+			results.push('Error');
+	}
+
+	switch leetcode_wildcard_matching("abbabaaabbabbaababbabbbbbabbbabbbabaaaaababababbbabababaabbababaabbbbbbaaaabababbbaabbbbaabbbbababababbaabbaababaabbbababababbbbaaabbbbbabaaaabbababbbbaababaabbababbbbbababbbabaaaaaaaabbbbbaabaaababaaaabb",
+		"**aa*****ba*a*bb**aa*ab****a*aaaaaa***a*aaaa**bbabb*b*b**aaaaaaaaa*a********ba*bbb***a*ba*bb*bb**a*b*bb") {
+		case false:
+			results.push('OK');
+		case _:
+			results.push('Error');
+	}
+
+	trace('Testing Wildcard Matching : ' + results.join(', '));
+}
+
 function test_leetcode_multiply_strings() {
 	var results:Array<String> = [];
 

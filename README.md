@@ -1351,3 +1351,24 @@ class Solution:
 
         return True
 ```
+
+## Solution 45
+
+https://leetcode.com/problems/jump-game-ii/
+
+### Solution in Python
+
+```py
+class Solution:
+    def jump(self, nums):
+        if len(nums) == 1:
+            return 0
+
+        def _try(idx, steps=0):
+            if nums[idx] + idx >= len(nums) - 1:
+                return steps + 1
+
+            return _try(max(enumerate(nums[idx+1:idx+1+nums[idx]], idx+1), key=sum)[0], steps+1)
+
+        return _try(0)
+```

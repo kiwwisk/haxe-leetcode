@@ -110,6 +110,32 @@ function leetcode_combination_sum_ii(candidates:Array<Int>, target:Int):Array<Ar
 	return rv;
 }
 
+function leetcode_jump_game_ii(nums:Array<Int>):Int {
+	// https://leetcode.com/problems/jump-game-ii/
+
+	if (nums.length == 1)
+		return 0;
+
+	function _try(idx, steps = 0) {
+		if (nums[idx] + idx >= nums.length - 1)
+			return steps + 1;
+
+		final slice = nums.slice(idx + 1, idx + 1 + nums[idx]);
+		var max_i = 0;
+		var max_s = 0;
+		for (i in 0...slice.length) {
+			final s = slice[i] + idx + 1 + i;
+			if (s > max_s) {
+				max_s = s;
+				max_i = idx + 1 + i;
+			}
+		}
+		return _try(max_i, steps + 1);
+	}
+
+	return _try(0);
+}
+
 function leetcode_wildcard_matching(s:String, p:String):Bool {
 	// https://leetcode.com/problems/wildcard-matching/
 

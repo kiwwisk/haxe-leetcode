@@ -2,6 +2,33 @@ package;
 
 import Problems;
 
+function test_leetcode_jump_game_ii() {
+	var results:Array<String> = [];
+
+	switch leetcode_jump_game_ii([2, 3, 1, 1, 4]) {
+		case 2:
+			results.push('OK');
+		case _:
+			results.push('Error');
+	}
+
+	switch leetcode_jump_game_ii([2, 3, 0, 1, 4]) {
+		case 2:
+			results.push('OK');
+		case _:
+			results.push('Error');
+	}
+
+	switch leetcode_jump_game_ii([3, 2, 1]) {
+		case 1:
+			results.push('OK');
+		case _:
+			results.push('Error');
+	}
+
+	trace('Testing Jump Game II : ' + results.join(', '));
+}
+
 function test_leetcode_wildcard_matching() {
 	var results:Array<String> = [];
 

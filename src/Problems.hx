@@ -110,6 +110,25 @@ function leetcode_combination_sum_ii(candidates:Array<Int>, target:Int):Array<Ar
 	return rv;
 }
 
+function leetcode_permutations(nums:Array<Int>):Array<Array<Int>> {
+	// https://leetcode.com/problems/permutations/
+
+	final rv:Array<Array<Int>> = [];
+
+	function _permute(idxs:Array<Int>) {
+		if (idxs.length == nums.length) {
+			rv.push([for (i in idxs) nums[i]]);
+			return;
+		}
+		for (i in 0...nums.length)
+			if (idxs.indexOf(i) == -1)
+				_permute(idxs.concat([i]));
+	}
+
+	_permute([]);
+	return rv;
+}
+
 function leetcode_jump_game_ii(nums:Array<Int>):Int {
 	// https://leetcode.com/problems/jump-game-ii/
 

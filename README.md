@@ -1372,3 +1372,28 @@ class Solution:
 
         return _try(0)
 ```
+
+## Solution 46
+
+https://leetcode.com/problems/permutations/
+
+### Solution in Python
+
+```py
+class Solution:
+    def permute(self, nums):
+
+        rv = []
+
+        def permute(idxs):
+            if len(idxs) == len(nums):
+                rv.append([nums[i] for i in idxs])
+                return
+
+            for i in range(len(nums)):
+                if i not in idxs:
+                    permute([*idxs, i])
+
+        permute([])
+        return rv
+```

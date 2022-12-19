@@ -2,6 +2,26 @@ package;
 
 import Problems;
 
+function test_leetcode_permutations_II() {
+	var results:Array<String> = [];
+
+	switch leetcode_permutations_II([1, 1, 2]) {
+		case [[1, 1, 2], [1, 2, 1], [2, 1, 1]]:
+			results.push('OK');
+		case _:
+			results.push('Error');
+	}
+
+	switch leetcode_permutations_II([1, 2, 3]) {
+		case [[1, 2, 3], [1, 3, 2], [2, 1, 3], [2, 3, 1], [3, 1, 2], [3, 2, 1]]:
+			results.push('OK');
+		case _:
+			results.push('Error');
+	}
+
+	trace('Testing Permutations II : ' + results.join(', '));
+}
+
 function test_leetcode_permutations() {
 	var results:Array<String> = [];
 

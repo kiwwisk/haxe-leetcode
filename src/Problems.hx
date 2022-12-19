@@ -110,6 +110,38 @@ function leetcode_combination_sum_ii(candidates:Array<Int>, target:Int):Array<Ar
 	return rv;
 }
 
+function leetcode_permutations_II(nums:Array<Int>):Array<Array<Int>> {
+	// https://leetcode.com/problems/permutations-ii/
+
+	final rv:Array<Array<Int>> = [];
+	final cnt:Map<Int, Int> = [];
+
+	for (n in nums)
+		cnt[n] = cnt.exists(n) ? cnt[n] + 1 : 1;
+
+	// if (cnt.exists(n))
+	// 	cnt[n] += 1;
+	// else
+	// 	cnt[n] = 1;
+
+	function permute(n:Array<Int>) {
+		if (n.length == nums.length) {
+			rv.push(n);
+			return;
+		}
+
+		for (k in cnt.keys())
+			if (cnt[k] > 0) {
+				cnt[k] -= 1;
+				permute(n.concat([k]));
+				cnt[k] += 1;
+			}
+	}
+
+	permute([]);
+	return rv;
+};
+
 function leetcode_permutations(nums:Array<Int>):Array<Array<Int>> {
 	// https://leetcode.com/problems/permutations/
 

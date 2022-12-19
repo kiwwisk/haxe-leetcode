@@ -48,5 +48,6 @@ class Main {
 		test_leetcode_wildcard_matching();
 		test_leetcode_jump_game_ii();
 		test_leetcode_permutations();
+		test_leetcode_permutations_II();
 	}
 }

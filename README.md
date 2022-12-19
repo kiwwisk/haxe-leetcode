@@ -1397,3 +1397,34 @@ class Solution:
         permute([])
         return rv
 ```
+
+## Solution 47
+
+https://leetcode.com/problems/permutations-ii/
+
+### Solution in Python
+
+```py
+class Solution:
+    def permuteUnique(self, nums):
+
+        rv = []
+
+        cnt = {}
+        for n in nums:
+            cnt[n] = cnt.get(n, 0) + 1
+
+        def permute(n):
+            if len(n) == len(nums):
+                rv.append(n)
+                return
+
+            for k in cnt:
+                if cnt[k] > 0:
+                    cnt[k] -= 1
+                    permute(n + [k])
+                    cnt[k] += 1
+
+        permute([])
+        return rv
+```
